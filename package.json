@@ -1,0 +1,19 @@
+{
+  "name": "discord-janus",
+  "version": "0.0.1",
+  "description": "My Node.js Discord bot",
+  "main": "bot.js",
+  "author": "josef",
+  "scripts": {
+    "start": "node bot.js"
+  },
+  "dependencies": {
+    "discord.js": "^11.2.1",
+    "gdax": "^0.4.2"
+  },
+  "devDependencies": {
+    "eslint": "^4.13.1"
+  },
+  "repository": "https://github.com/josefaidt/Janus.git",
+  "license": "MIT"
+}
