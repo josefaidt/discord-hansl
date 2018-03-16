@@ -12,7 +12,12 @@ const lib = require('./lib')
 const Commands = lib.commands
 
 function hasCommand (value) {
-  return Object.keys(Commands).some(key => Commands[key].name === value)
+  // return Object.keys(Commands).some(key => Commands[key].name === value)
+  if (Commands.get(value)) {
+    return true
+  } else {
+    return false
+  }
 }
 
 bot.on('ready', () => {
@@ -26,7 +31,8 @@ bot.on('message', msg => {
     let suffix = msg.content.substring(cmdText.length + 2) // add one for the $ and one for the space
 
     if (hasCommand(cmdText)) {
-      let cmd = Commands[cmdText]
+      // let cmd = Commands[cmdText]
+      let cmd = Commands.get(cmdText)
 
       if (cmd.name === 'help') {
         // use standard msg.process for now, more checking eventually
