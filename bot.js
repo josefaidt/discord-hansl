@@ -3,11 +3,13 @@
 // load and initialize Discord.js library
 const Discord = require('discord.js')
 const bot = new Discord.Client()
-// The token of your bot - https://discordapp.com/developers/applications/me
-const token = 'Mzk1OTczODkyOTkwMDQyMTEz.DSaq9A.PQMvswFW-NbIue81LBzkV-PzjIo'
+
+const discord = require('./lib/security/discord.js')
+const token = discord.token
 
 // load user libraries
-const Commands = require('./lib/commands.js')
+const lib = require('./lib')
+const Commands = lib.commands
 
 function hasCommand (value) {
   return Object.keys(Commands).some(key => Commands[key].name === value)

@@ -1,8 +1,14 @@
 # Change Log
-All notable changes to the Janus bot will be documented in this file.
+All notable changes to the Hansl bot will be documented in this file.
 
 ## [Unreleased]
 ---
+## [0.0.2] - 2018-03-15
+### Added
+- security fix
+- added require-directory for modules
+- name change
+
 ## [0.0.1] - 2017-12-28
 ### Initial Commit
 - functioning bot with command structure

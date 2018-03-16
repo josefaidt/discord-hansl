@@ -8,10 +8,12 @@
     "start": "node bot.js"
   },
   "dependencies": {
-    "discord.js": "^11.2.1",
-    "gdax": "^0.4.2"
+    "discord.js": "*",
+    "gdax": "*",
+    "require-directory": "^2.1.1"
   },
   "devDependencies": {
+    "gulp": "^3.9.1",
     "standard": "^10.0.3"
   },
   "repository": "https://github.com/josefaidt/Janus.git",
