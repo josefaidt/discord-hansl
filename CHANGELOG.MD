@@ -3,6 +3,16 @@ All notable changes to the Hansl bot will be documented in this file.
 
 ## [Unreleased]
 ---
+## [0.0.3] - 2018-03-18
+### Added
+- /lib/commands/core.js - app core with Command class
+- /lib/commands/index.js - command module loader
+- split weather out into individual file
+- better command stream, will split out discord commands
+
+### Changed
+- targeting latest base image version in Dockerfile
+
 ## [0.0.2] - 2018-03-15
 ### Added
 - security fix
