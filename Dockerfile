@@ -1,4 +1,4 @@
-FROM mhart/alpine-node:9.3.0
+FROM mhart/alpine-node:latest
 
 WORKDIR /app
 COPY package.json yarn.lock ./
