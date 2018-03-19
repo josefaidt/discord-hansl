@@ -3,6 +3,15 @@ All notable changes to the Hansl bot will be documented in this file.
 
 ## [Unreleased]
 ---
+## [0.0.3.1] - 2018-03-18
+### Added
+- dynamic module loader, sets CommandMap
+- /lib/commands/discord.js - discord commands, added avatar
+
+### Changed
+- began async process for weather cmd
+- bot.js - passing bot through commands for bot stats, uses
+
 ## [0.0.3] - 2018-03-18
 ### Added
 - /lib/commands/core.js - app core with Command class
