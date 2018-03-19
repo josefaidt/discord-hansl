@@ -29,6 +29,7 @@ bot.on('message', msg => {
   if (msg.author.id !== bot.user.id && msg.content[0] === cmdPrefix) {
     let cmdText = msg.content.split(' ')[0].substring(1).toLowerCase()
     let suffix = msg.content.substring(cmdText.length + 2) // add one for the $ and one for the space
+    // msg.channel.send(`suffix is ${suffix}`)
 
     if (hasCommand(cmdText)) {
       // let cmd = Commands[cmdText]
@@ -36,9 +37,9 @@ bot.on('message', msg => {
 
       if (cmd.name === 'help') {
         // use standard msg.process for now, more checking eventually
-        cmd.fn(msg, suffix)
+        cmd.fn(bot, msg, suffix)
       } else {
-        cmd.fn(msg, suffix)
+        cmd.fn(bot, msg, suffix)
       }
     } else {
       msg.channel.send("Oops, don't know that command.")
