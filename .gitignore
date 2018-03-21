@@ -63,6 +63,10 @@ typings/
 lib/security
 .DS_STORE
 .vscode/launch.json
+/etc/config.json
 
 # *.tmp files
 **/*.tmp
+
+# old files
+.old/
