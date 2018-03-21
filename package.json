@@ -16,6 +16,9 @@
     "gulp": "^3.9.1",
     "standard": "^10.0.3"
   },
+  "engines": {
+    "node": "9.4.0"
+  },
   "repository": "https://github.com/josefaidt/Janus.git",
   "license": "MIT"
 }
