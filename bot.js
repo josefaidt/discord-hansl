@@ -4,8 +4,8 @@
 const Discord = require('discord.js')
 const bot = new Discord.Client()
 
-const discord = require('./lib/security/discord.js')
-const token = discord.token
+const config = require('./etc/config.json')
+const token = config.loginToken
 
 // load user libraries
 const lib = require('./lib')
@@ -25,7 +25,7 @@ bot.on('ready', () => {
 })
 
 bot.on('message', msg => {
-  const cmdPrefix = '$'
+  const cmdPrefix = config.cmdPrefix
   if (msg.author.id !== bot.user.id && msg.content[0] === cmdPrefix) {
     let cmdText = msg.content.split(' ')[0].substring(1).toLowerCase()
     let suffix = msg.content.substring(cmdText.length + 2) // add one for the $ and one for the space

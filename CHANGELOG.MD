@@ -3,6 +3,11 @@ All notable changes to the Hansl bot will be documented in this file.
 
 ## [Unreleased]
 ---
+## [0.0.3.2] - 2018-03-20
+### Added
+- /etc/sample.config.json - added sample config, changed way bot reads config values
+- /lib/commands/help - built and added help command to return list of commands
+
 ## [0.0.3.1] - 2018-03-18
 ### Added
 - dynamic module loader, sets CommandMap
