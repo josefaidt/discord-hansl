@@ -3,6 +3,24 @@ All notable changes to the Hansl bot will be documented in this file.
 
 ## [Unreleased]
 ---
+## [0.0.4.0] - 2018-05-08
+### Added
+- /lib/commands/core/*
+  - added loader
+  - added quirks
+- /lib/commands/general.js
+- bot.js
+  - added a few functions logging generic statistics
+  - setActivity added
+  - cleaned up message handler
+  - added ping command
+- /etc/sample.config.json
+  - removed WeatherUnderground key
+  - added weatherDegreeType
+- /lib/commands/weather.js
+  - added weather-js package
+  - removed WeatherUnderground functions
+
 ## [0.0.3.3] - 2018-03-21
 - /lib/commands/discord.js - added channel command
 

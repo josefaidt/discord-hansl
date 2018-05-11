@@ -1,5 +1,5 @@
 {
   "loginToken": "<discord app auth token>",
-  "wundergroundAPIkey": "<wunderground auth token>",
-  "cmdPrefix": "$"
+  "cmdPrefix": "$",
+  "weatherDegreeType": "F"
 }

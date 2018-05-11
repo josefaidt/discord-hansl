@@ -10,7 +10,8 @@
   "dependencies": {
     "discord.js": "*",
     "gdax": "*",
-    "require-directory": "^2.1.1"
+    "require-directory": "^2.1.1",
+    "weather-js": "^2.0.0"
   },
   "devDependencies": {
     "gulp": "^3.9.1",

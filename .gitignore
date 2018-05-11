@@ -70,3 +70,4 @@ lib/security
 
 # old files
 .old/
+*.lock
