@@ -25,12 +25,17 @@ bot.on('ready', () => {
   console.log(`Bot has started with ${bot.users.size} users in ${bot.channels.size} channels of ${bot.guilds.size} guilds.`)
   bot.user.setActivity(`Ascension ${bot.guilds.size}% Complete`)
     .catch(console.error)
+  console.log(bot)
 })
 
 bot.on('guildCreate', guild => {
   // this event triggers when bot joins a guild
   console.log(`New guild joined: ${guild.name} (id: ${guild.id}). This guild has ${guild.memberCount} members`)
   bot.user.setActivity(`Ascension ${bot.guilds.size}% Complete`)
+
+  if (!guild.roles.hansl) {
+    // add system role creation
+  }
 })
 
 bot.on('guildDelete', guild => {

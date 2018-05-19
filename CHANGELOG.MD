@@ -3,6 +3,20 @@ All notable changes to the Hansl bot will be documented in this file.
 
 ## [Unreleased]
 ---
+## [0.0.4.1] - 2018-05-19
+### Added
+- /lib/commands/discord/roles.js
+  - created system role creation test
+  - created delete role
+- /lib/commands/discord.js
+  - polished clear command
+    - if user does not have manage messages permission it doesn't allow clear
+  - clear without suffix deletes last message, too
+    - only if last message was also users
+- /lib/core/system.js
+  - created skeleton system file
+  - uses include: bot setup, checks for on-start
+
 ## [0.0.4.0] - 2018-05-08
 ### Added
 - /lib/commands/core/*
