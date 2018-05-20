@@ -1,12 +1,11 @@
-FROM mhart/alpine-node:latest
+FROM node:10
+ENV NODE_VERSION 10
+ENV app /usr/hansl/app
+WORKDIR ${app}
 
-WORKDIR /app
-COPY package.json yarn.lock ./
-# If you have native dependencies, you'll need extra tools
-# RUN apk add --no-cache make gcc g++ python
+COPY package.json ./
 RUN yarn install --production
-
 COPY . .
 
 EXPOSE 3000
-CMD ["node", "bot.js"]
+CMD ["node", "bot.js"]`
