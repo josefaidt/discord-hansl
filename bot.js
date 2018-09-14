@@ -8,6 +8,7 @@ const config = require('./etc/config.json')
 
 // load user libraries
 const lib = require('./lib')
+console.log(lib)
 const Commands = lib.commands
 
 function hasCommand (value) {
@@ -26,6 +27,7 @@ bot.on('ready', () => {
   bot.user.setActivity(`Ascension ${bot.guilds.size}% Complete`)
     .catch(console.error)
   console.log(bot)
+  console.log(Commands)
 })
 
 bot.on('guildCreate', guild => {
@@ -38,6 +40,12 @@ bot.on('guildCreate', guild => {
   }
 })
 
+bot.on('guldMemberAdd', member => {
+  lib.core.system.welcome(member.guild, member.user.username, config.welcomeChannel)
+  // add custom message
+  // get all text channels for config page, then select ID to mitigate multiple channels of the same name
+})
+
 bot.on('guildDelete', guild => {
   // this event triggers when bot is removed from a guild
   console.log(`I have been removed from: ${guild.name} (id: ${guild.id})`)
@@ -46,6 +54,7 @@ bot.on('guildDelete', guild => {
 
 bot.on('message', async message => {
   // ignore messages from bot, empty commands, and other bots
+  // how do we handle mentions? (ex: @voltron)
   if (message.author.id !== bot.user.id && message.content[0] === config.prefix && !message.author.bot) {
     let command = message.content.split(' ')[0].substring(1).toLowerCase()
     let suffix = message.content.substring(command.length + 2) // add one for the prefix and one for the space
@@ -55,7 +64,12 @@ bot.on('message', async message => {
       if (cmd.name === 'help') {
         cmd.fn(bot, message, suffix)
       } else {
+        console.log(suffix.split(' ')[0])
+        // if (suffix.split(' ')[0] === 'help') {
+        //   message.channel.send(cmd.help)
+        // } else {
         cmd.fn(bot, message, suffix)
+        // }
       }
     } else if (command === 'ping') {
       const m = await message.channel.send('Ping?')
