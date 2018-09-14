@@ -3,6 +3,17 @@ All notable changes to the Hansl bot will be documented in this file.
 
 ## [Unreleased]
 ---
+## [0.0.4.2] - 2018-05-22
+### Added
+- /lib/core/system.js
+  - added "welcome" function
+- /lib/commands/private.js
+  - added *private* command
+  - skeleton command structure
+
+### Fixed
+- ran `standard --fix` to appease standards
+
 ## [0.0.4.1] - 2018-05-19
 ### Added
 - /lib/commands/discord/roles.js
@@ -15,7 +26,7 @@ All notable changes to the Hansl bot will be documented in this file.
     - only if last message was also users
 - /lib/core/system.js
   - created skeleton system file
-  - uses include: bot setup, checks for on-start
+- uses include: bot setup, checks for on-start
 
 ## [0.0.4.0] - 2018-05-08
 ### Added
