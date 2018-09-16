@@ -70,5 +70,6 @@ lib/security
 
 # old files
 .old/
-*.lock
 package-lock.json
+
+dist/

@@ -5,7 +5,14 @@
   "main": "bot.js",
   "author": "josef",
   "scripts": {
-    "start": "node bot.js"
+    "start": "node src/bot.js",
+    "build": "rimraf dist && babel src -d dist",
+    "check": "standard \"src/**/*.js\"",
+    "fix": "standard --fix \"src/**/*.js\"",
+    "client": "webpack-dev-server --mode development --hot"
+  },
+  "babel": {
+    "presets": ["@babel/preset-env"]
   },
   "dependencies": {
     "discord.js": "^11.3.2",
@@ -14,12 +21,15 @@
     "weather-js": "^2.0.0"
   },
   "devDependencies": {
-    "gulp": "^3.9.1",
+    "@babel/cli": "^7.0.0",
+    "@babel/core": "^7.0.1",
+    "@babel/preset-env": "^7.0.0",
+    "rimraf": "^2.6.2",
     "standard": "^10.0.3"
   },
   "engines": {
     "node": "10"
   },
-  "repository": "https://github.com/josefaidt/Janus.git",
+  "repository": "https://github.com/josefaidt/discord-hansl.git",
   "license": "MIT"
 }
