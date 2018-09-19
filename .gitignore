@@ -62,7 +62,7 @@ typings/
 # Security
 lib/security
 .DS_STORE
-.vscode
+# .vscode
 src/etc/config.json
 **/config.json
 

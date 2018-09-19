@@ -1,19 +1,20 @@
 'use strict'
-
+import '@babel/polyfill'
 // load and initialize Discord.js library
-import Discord from 'discord.js'
-import path from 'path'
+// import Discord from 'discord.js'
+// import path from 'path'
+const Discord = require('discord.js')
+const path = require('path')
 
 const bot = new Discord.Client()
 
-const Config = path.join(__dirname, 'etc', 'config.json')
-import * as config from Config
+const config = require(path.join(__dirname, 'etc', 'config.json'))
 
 // load user libraries
 const lib = require('./lib')
 const Commands = lib.commands
 
-function hasCommand(value) {
+function hasCommand (value) {
   // return Object.keys(Commands).some(key => Commands[key].name === value)
   if (Commands.get(value)) {
     return true
@@ -110,4 +111,10 @@ bot.on('message', async message => {
   }
 })
 
-bot.login(config.loginToken)
+let loginToken
+if (process.argv[2] === 'dev') {
+  loginToken = config.logindev
+} else if (process.argv[2] === 'prod') {
+  loginToken = config.loginToken
+}
+bot.login(loginToken).catch(console.error)
