@@ -1,22 +1,18 @@
 import weather from 'weather-js'
-import Command from './core'
+import Command from '../Command'
 import config from '../../etc/config.json'
 
-export default class Weather extends Command {
-  constructor() {
-    super()
-    this.name = 'tweather'
-    this.alias = 'w'
-    this.help = 'provides weather information'
-  }
-
-  fn = (bot, msg, Suffix) => {
+export default new Command({
+  name: 'tweather',
+  alias: 't',
+  help: 'provides weather information',
+  fn: (bot, msg, Suffix) => {
     let location = Suffix.split(' ').join('_')
     if (location.length === 0) {
       msg.channel.send('I need a location').catch(console.error)
     }
 
-    weather.find(
+    Weather.find(
       { search: location, degreeType: config.weatherDegreeType },
       async (err, res) => {
         if (err) {
@@ -25,28 +21,28 @@ export default class Weather extends Command {
         }
         const weathermsg = await JSON.stringify(res, null, 2)
         // await console.log(JSON.stringify(res, null, 2))
-        const weatherObj = await res[0]
-        if (!weatherObj) {
+        const weather = await res[0]
+        if (!weather) {
           msg.channel.send("I can't find that location")
         } else {
           const temperature =
-            weatherObj.current.temperature +
-            '\xB0' +
-            weatherObj.location.degreetype
+            weather.current.temperature + '\xB0' + weather.location.degreetype
           const message = `Currently in ${
-            weatherObj.location.name
+            weather.location.name
           } it's ${temperature}`
 
           msg.channel
             .send(message)
             .then(message =>
               console.log(
-                `Sent weather information for ${weatherObj.location.name}`
+                `Sent weather information for ${weather.location.name}`
               )
             )
             .catch(console.error)
         }
       }
-    ) // end Weather.find
+    )
   }
-}
+})
+
+// module.exports.cmdWeather = cmdWeather

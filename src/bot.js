@@ -14,9 +14,13 @@ const config = require(path.join(__dirname, 'etc', 'config.json'))
 const lib = require('./lib')
 const Commands = lib.commands
 
-function hasCommand (value) {
+console.log(lib)
+
+function hasCommand(value) {
   // return Object.keys(Commands).some(key => Commands[key].name === value)
   if (Commands.get(value)) {
+    return true
+  } else if (Commands.get(value)) {
     return true
   } else {
     return false
@@ -34,8 +38,6 @@ bot.on('ready', () => {
   bot.user
     .setActivity(`Ascension ${bot.guilds.size}% Complete`)
     .catch(console.error)
-  console.log(bot)
-  console.log(Commands)
 })
 
 bot.on('guildCreate', guild => {
@@ -111,10 +113,11 @@ bot.on('message', async message => {
   }
 })
 
+// use a launch flag to debug app
 let loginToken
 if (process.argv[2] === 'dev') {
   loginToken = config.logindev
-} else if (process.argv[2] === 'prod') {
+} else if (process.argv[2] === 'prod' || !process.argv[2]) {
   loginToken = config.loginToken
 }
 bot.login(loginToken).catch(console.error)
