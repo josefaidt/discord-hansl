@@ -1,25 +1,38 @@
 {
   "name": "discord-hansl",
-  "version": "0.0.4.2",
+  "version": "0.0.5",
   "description": "My Node.js Discord bot",
   "main": "bot.js",
   "author": "josef",
   "scripts": {
-    "start": "node bot.js"
+    "start": "node src/bot.js",
+    "build:prod": "rimraf dist && babel src --out-dir dist --env-name PROD; cp .env dist",
+    "build:start": "NODE_ENV=PROD node dist/bot.js",
+    "build": "yarn build:prod; yarn build:start",
+    "build:dev": "rimraf tmp && babel src --out-dir tmp --env-name DEV; cp .env tmp",
+    "check": "standard \"src/**/*.js\"",
+    "fix": "standard --fix \"src/**/*.js\"",
+    "clean": "rimraf tmp dist"
   },
   "dependencies": {
     "discord.js": "^11.3.2",
+    "dotenv": "^6.0.0",
     "gdax": "*",
     "require-directory": "^2.1.1",
     "weather-js": "^2.0.0"
   },
   "devDependencies": {
-    "gulp": "^3.9.1",
+    "@babel/cli": "^7.0.0",
+    "@babel/core": "^7.0.1",
+    "@babel/plugin-proposal-class-properties": "^7.0.0",
+    "@babel/polyfill": "^7.0.0",
+    "@babel/preset-env": "^7.0.0",
+    "rimraf": "^2.6.2",
     "standard": "^10.0.3"
   },
   "engines": {
     "node": "10"
   },
-  "repository": "https://github.com/josefaidt/Janus.git",
+  "repository": "https://github.com/josefaidt/discord-hansl.git",
   "license": "MIT"
 }

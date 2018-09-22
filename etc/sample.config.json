@@ -1,5 +1,0 @@
-{
-  "loginToken": "<discord app auth token>",
-  "cmdPrefix": "$",
-  "weatherDegreeType": "F"
-}

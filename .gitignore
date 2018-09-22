@@ -58,17 +58,23 @@ typings/
 
 # dotenv environment variables file
 .env
+.env.dev
 
 # Security
 lib/security
 .DS_STORE
-.vscode/launch.json
-/etc/config.json
+# .vscode
+src/etc/config.json
+**/config.json
 
 # *.tmp files
 **/*.tmp
+tmp/
 
 # old files
 .old/
-*.lock
 package-lock.json
+
+
+
+dist/

@@ -3,6 +3,21 @@ All notable changes to the Hansl bot will be documented in this file.
 
 ## [Unreleased]
 ---
+## [0.0.5] - 2018-09-22
+### Changed
+- added babel build process
+- enabled es6+ syntax
+- removed internal commands, focusing on weather
+- new structure
+  - bin/
+    - commands
+  - lib/
+    - command & app internal library
+  - .env
+    - replaced config.json for bot variables
+  - .babelrc.js
+    - build process for es6+ syntax
+
 ## [0.0.4.2] - 2018-05-22
 ### Added
 - /lib/core/system.js
