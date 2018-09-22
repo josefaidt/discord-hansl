@@ -3,15 +3,15 @@ import '@babel/polyfill'
 // load and initialize Discord.js library
 // import Discord from 'discord.js'
 // import path from 'path'
-const Discord = require('discord.js')
-const path = require('path')
+import Discord from 'discord.js'
+import path from 'path'
 
 const bot = new Discord.Client()
 
-const config = require(path.join(__dirname, 'etc', 'config.json'))
-
 // load user libraries
-const lib = require('./lib')
+import lib from './lib'
+import bin from './bin'
+console.log(bin)
 const Commands = lib.commands
 
 console.log(lib)
@@ -58,7 +58,7 @@ bot.on('guldMemberAdd', member => {
   lib.core.system.welcome(
     member.guild,
     member.user.username,
-    config.welcomeChannel
+    process.env.WELCOME_CHANNEL
   )
   // add custom message
   // get all text channels for config page, then select ID to mitigate multiple channels of the same name
@@ -75,7 +75,7 @@ bot.on('message', async message => {
   // how do we handle mentions? (ex: @voltron)
   if (
     message.author.id !== bot.user.id &&
-    message.content[0] === config.prefix &&
+    message.content[0] === process.env.PREFIX &&
     !message.author.bot
   ) {
     let command = message.content
@@ -113,11 +113,12 @@ bot.on('message', async message => {
   }
 })
 
-// use a launch flag to debug app
-let loginToken
-if (process.argv[2] === 'dev') {
-  loginToken = config.logindev
-} else if (process.argv[2] === 'prod' || !process.argv[2]) {
-  loginToken = config.loginToken
+if (process.env.NODE_ENV === 'PROD') {
+  require('dotenv').load()
 }
+// use a launch flag to debug app
+console.log(process.env)
+let loginToken = process.env.LOGIN
+
+console.log(loginToken)
 bot.login(loginToken).catch(console.error)

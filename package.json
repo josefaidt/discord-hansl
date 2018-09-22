@@ -6,13 +6,16 @@
   "author": "josef",
   "scripts": {
     "start": "node src/bot.js",
-    "build:prod": "rimraf dist && babel src --out-dir dist; cp .env dist",
-    "build:dev": "rimraf tmp && babel src --out-dir tmp; cp .env tmp",
+    "build:prod": "rimraf dist && babel src --out-dir dist --env-name PROD; cp .env dist",
+    "build:start": "NODE_ENV=PROD node dist/bot.js",
+    "build": "yarn build:prod; yarn build:start",
+    "build:dev": "rimraf tmp && babel src --out-dir tmp --env-name DEV; cp .env tmp",
     "check": "standard \"src/**/*.js\"",
     "fix": "standard --fix \"src/**/*.js\""
   },
   "dependencies": {
     "discord.js": "^11.3.2",
+    "dotenv": "^6.0.0",
     "gdax": "*",
     "require-directory": "^2.1.1",
     "weather-js": "^2.0.0"
