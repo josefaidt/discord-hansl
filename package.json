@@ -6,21 +6,10 @@
   "author": "josef",
   "scripts": {
     "start": "node src/bot.js",
-    "build": "rimraf dist && babel src --out-dir dist --source-maps && mkdir dist/etc; cp .env dist",
+    "build:prod": "rimraf dist && babel src --out-dir dist; cp .env dist",
+    "build:dev": "rimraf tmp && babel src --out-dir tmp; cp .env tmp",
     "check": "standard \"src/**/*.js\"",
     "fix": "standard --fix \"src/**/*.js\""
-  },
-  "babel": {
-    "presets": [
-      "@babel/preset-env"
-    ],
-    "plugins": [
-      "@babel/plugin-proposal-class-properties"
-    ],
-    "generatorOpts": {
-      "minified": true,
-      "comments": false
-    }
   },
   "dependencies": {
     "discord.js": "^11.3.2",

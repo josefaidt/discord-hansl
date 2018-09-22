@@ -58,6 +58,7 @@ typings/
 
 # dotenv environment variables file
 .env
+.env.dev
 
 # Security
 lib/security
@@ -68,9 +69,12 @@ src/etc/config.json
 
 # *.tmp files
 **/*.tmp
+tmp/
 
 # old files
 .old/
 package-lock.json
+
+
 
 dist/

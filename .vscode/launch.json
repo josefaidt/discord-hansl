@@ -7,14 +7,12 @@
     {
       "type": "node",
       "request": "launch",
-      "args": [
-        "dev"
-      ],
+      "args": [],
       "name": "Launch Program",
-      "program": "${workspaceFolder}/dist/bot.js",
-      "envFile": "${workspaceFolder}/.env",
+      "program": "${workspaceFolder}/tmp/bot.js",
+      "envFile": "${workspaceFolder}/.env.dev",
       "sourceMaps": true,
-      "preLaunchTask": "npm: build"
+      "preLaunchTask": "npm: build:dev"
     }
   ]
 }
