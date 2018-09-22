@@ -11,7 +11,8 @@
     "build": "yarn build:prod; yarn build:start",
     "build:dev": "rimraf tmp && babel src --out-dir tmp --env-name DEV; cp .env tmp",
     "check": "standard \"src/**/*.js\"",
-    "fix": "standard --fix \"src/**/*.js\""
+    "fix": "standard --fix \"src/**/*.js\"",
+    "clean": "rimraf tmp dist"
   },
   "dependencies": {
     "discord.js": "^11.3.2",

@@ -113,12 +113,10 @@ bot.on('message', async message => {
   }
 })
 
+// if PROD, use dotenv to import environment vars
 if (process.env.NODE_ENV === 'PROD') {
   require('dotenv').load()
 }
-// use a launch flag to debug app
-console.log(process.env)
+// set login token, either from .env or vscode launch.json
 let loginToken = process.env.LOGIN
-
-console.log(loginToken)
 bot.login(loginToken).catch(console.error)
