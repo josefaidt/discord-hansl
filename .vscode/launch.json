@@ -12,6 +12,7 @@
       ],
       "name": "Launch Program",
       "program": "${workspaceFolder}/dist/bot.js",
+      "envFile": "${workspaceFolder}/.env",
       "sourceMaps": true,
       "preLaunchTask": "npm: build"
     }
