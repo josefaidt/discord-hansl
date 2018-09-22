@@ -1,19 +1,15 @@
 import weather from 'weather-js'
 import Command from '../Command'
-import config from '../../etc/config.json'
 
-export default new Command({
-  name: 'tweather',
-  alias: 't',
-  help: 'provides weather information',
-  fn: (bot, msg, Suffix) => {
-    let location = Suffix.split(' ').join('_')
-    if (location.length === 0) {
-      msg.channel.send('I need a location').catch(console.error)
-    }
+const config = process.env
 
+export default new Command(
+  'tweather',
+  't',
+  'provides weather information',
+  function(bot, msg, Suffix) {
     Weather.find(
-      { search: location, degreeType: config.weatherDegreeType },
+      { search: location, degreeType: config.WEATHER_DEGREE_TYPE },
       async (err, res) => {
         if (err) {
           // msg.channel.send('Something went wrong while fetching the weather')
@@ -43,6 +39,6 @@ export default new Command({
       }
     )
   }
-})
+)
 
 // module.exports.cmdWeather = cmdWeather

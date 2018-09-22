@@ -8,19 +8,18 @@ import path from 'path'
 
 const bot = new Discord.Client()
 
+// if PROD, use dotenv to import environment vars
+if (process.env.NODE_ENV === 'PROD') {
+  require('dotenv').load()
+}
+
 // load user libraries
 import lib from './lib'
-import bin from './bin'
-console.log(bin)
-const Commands = lib.commands
-
-console.log(lib)
+import Commands from './bin'
 
 function hasCommand(value) {
   // return Object.keys(Commands).some(key => Commands[key].name === value)
-  if (Commands.get(value)) {
-    return true
-  } else if (Commands.get(value)) {
+  if (Commands[value]) {
     return true
   } else {
     return false
@@ -83,18 +82,18 @@ bot.on('message', async message => {
       .substring(1)
       .toLowerCase()
     let suffix = message.content.substring(command.length + 2) // add one for the prefix and one for the space
+
     if (hasCommand(command)) {
-      let cmd = Commands.get(command)
+      let cmd = Commands[command].default
       // let suffix = Suffix.split(' ')
+
       if (cmd.name === 'help') {
         cmd.fn(bot, message, suffix)
       } else {
-        console.log(suffix.split(' ')[0])
-        // if (suffix.split(' ')[0] === 'help') {
-        //   message.channel.send(cmd.help)
-        // } else {
-        cmd.fn(bot, message, suffix)
-        // }
+        // console.log(suffix.split(' ')[0])
+        // console.log(suffix)
+        // console.log(cmd)
+        cmd.default(bot, message, suffix)
       }
     } else if (command === 'ping') {
       const m = await message.channel.send('Ping?')
@@ -113,10 +112,6 @@ bot.on('message', async message => {
   }
 })
 
-// if PROD, use dotenv to import environment vars
-if (process.env.NODE_ENV === 'PROD') {
-  require('dotenv').load()
-}
 // set login token, either from .env or vscode launch.json
 let loginToken = process.env.LOGIN
 bot.login(loginToken).catch(console.error)
