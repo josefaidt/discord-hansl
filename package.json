@@ -6,10 +6,9 @@
   "author": "josef",
   "scripts": {
     "start": "node src/bot.js",
-    "build": "rimraf dist && babel src -d dist && mkdir dist/etc; cp src/etc/config.json dist/etc/",
+    "build": "rimraf dist && babel src --out-dir dist --source-maps && mkdir dist/etc; cp .env dist",
     "check": "standard \"src/**/*.js\"",
-    "fix": "standard --fix \"src/**/*.js\"",
-    "client": "webpack-dev-server --mode development --hot"
+    "fix": "standard --fix \"src/**/*.js\""
   },
   "babel": {
     "presets": [
@@ -17,7 +16,11 @@
     ],
     "plugins": [
       "@babel/plugin-proposal-class-properties"
-    ]
+    ],
+    "generatorOpts": {
+      "minified": true,
+      "comments": false
+    }
   },
   "dependencies": {
     "discord.js": "^11.3.2",
