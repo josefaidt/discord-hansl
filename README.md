@@ -3,7 +3,7 @@
     <img
       alt="hansl"
       src="https://github.com/josefaidt/discord-hansl/blob/master/img/hansl_banner.png"
-      width="300"
+      width="1000"
     />
   </a>
 </p>
