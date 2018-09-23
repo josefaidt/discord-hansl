@@ -16,6 +16,7 @@ if (process.env.NODE_ENV === 'PROD') {
 // load user libraries
 import lib from './lib'
 import Commands from './bin'
+console.log(Commands)
 
 function hasCommand(value) {
   // return Object.keys(Commands).some(key => Commands[key].name === value)

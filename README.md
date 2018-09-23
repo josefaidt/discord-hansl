@@ -8,9 +8,6 @@
   </a>
 </p>
 
-
-# Hansl
-
 ![GitHub package version](https://img.shields.io/github/package-json/v/josefaidt/discord-hansl.svg?style=flat-square)
 
 [![code style](https://img.shields.io/badge/code%20style-standard-brightgreen.svg?style=flat-square)](http://standardjs.com)

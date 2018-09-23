@@ -1,7 +1,7 @@
 import Command from '../Command'
 
 export default class Weather extends Command {
-  constructor(name, alias, help, adminOnly, subcmd, location) {
+  constructor(name, alias, help, adminOnly) {
     super()
     this.name = 'weather'
     this.alias = 'w'
