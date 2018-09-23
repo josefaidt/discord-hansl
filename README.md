@@ -2,7 +2,7 @@
   <a href="https://github.com/josefaidt/discord-hansl">
     <img
       alt="hansl"
-      src="https://github.com/josefaidt/discord-hansl/blob/master/img/hansl.png"
+      src="https://github.com/josefaidt/discord-hansl/blob/master/img/hansl_banner.png"
       width="300"
     />
   </a>
