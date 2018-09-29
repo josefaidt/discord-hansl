@@ -16,7 +16,12 @@ if (process.env.NODE_ENV === 'PROD') {
 // load user libraries
 import lib from './lib'
 import Commands from './bin'
-console.log(Commands)
+// console.log(Commands)
+
+// import Loader from './lib/_loader'
+// let loader = new Loader(lib)
+// console.log('Loader', Loader)
+// console.log(loader)
 
 function hasCommand(value) {
   // return Object.keys(Commands).some(key => Commands[key].name === value)
