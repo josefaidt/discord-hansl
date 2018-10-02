@@ -6,16 +6,17 @@ import '@babel/polyfill'
 import Discord from 'discord.js'
 import path from 'path'
 
+// load user libraries
+import lib from './lib'
+import Commands from './bin'
+
 const bot = new Discord.Client()
 
 // if PROD, use dotenv to import environment vars
 if (process.env.NODE_ENV === 'PROD') {
   require('dotenv').load()
 }
-
-// load user libraries
-import lib from './lib'
-import Commands from './bin'
+console.log(lib)
 // console.log(Commands)
 
 // import Loader from './lib/_loader'
@@ -23,7 +24,7 @@ import Commands from './bin'
 // console.log('Loader', Loader)
 // console.log(loader)
 
-function hasCommand(value) {
+function hasCommand (value) {
   // return Object.keys(Commands).some(key => Commands[key].name === value)
   if (Commands[value]) {
     return true
@@ -34,25 +35,25 @@ function hasCommand(value) {
 
 bot.on('ready', () => {
   // this event triggers when bot starts successfully
-  console.log(`Logged in as ${bot.user.tag}!`)
+  console.log(`Logged in as ${ bot.user.tag }!`)
   console.log(
-    `Bot has started with ${bot.users.size} users in ${
+    `Bot has started with ${ bot.users.size } users in ${
       bot.channels.size
-    } channels of ${bot.guilds.size} guilds.`
+    } channels of ${ bot.guilds.size } guilds.`
   )
   bot.user
-    .setActivity(`Ascension ${bot.guilds.size}% Complete`)
+    .setActivity(`Ascension ${ bot.guilds.size }% Complete`)
     .catch(console.error)
 })
 
 bot.on('guildCreate', guild => {
   // this event triggers when bot joins a guild
   console.log(
-    `New guild joined: ${guild.name} (id: ${guild.id}). This guild has ${
+    `New guild joined: ${ guild.name } (id: ${ guild.id }). This guild has ${
       guild.memberCount
     } members`
   )
-  bot.user.setActivity(`Ascension ${bot.guilds.size}% Complete`)
+  bot.user.setActivity(`Ascension ${ bot.guilds.size }% Complete`)
 
   if (!guild.roles.hansl) {
     // add system role creation
@@ -71,8 +72,8 @@ bot.on('guldMemberAdd', member => {
 
 bot.on('guildDelete', guild => {
   // this event triggers when bot is removed from a guild
-  console.log(`I have been removed from: ${guild.name} (id: ${guild.id})`)
-  bot.user.setActivity(`Ascension ${bot.guilds.size}% Complete`)
+  console.log(`I have been removed from: ${ guild.name } (id: ${ guild.id })`)
+  bot.user.setActivity(`Ascension ${ bot.guilds.size }% Complete`)
 })
 
 bot.on('message', async message => {
@@ -104,8 +105,8 @@ bot.on('message', async message => {
     } else if (command === 'ping') {
       const m = await message.channel.send('Ping?')
       m.edit(
-        `Pong! Latency is ${m.createdTimestamp -
-          message.createdTimestamp}ms. API Latency is ${Math.round(bot.ping)}ms`
+        `Pong! Latency is ${ m.createdTimestamp -
+          message.createdTimestamp }ms. API Latency is ${ Math.round(bot.ping) }ms`
       )
     } else {
       message.channel.send("Oops, don't know that command.")

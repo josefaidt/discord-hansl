@@ -1197,7 +1197,7 @@ detect-libc@^1.0.2:
   resolved "https://registry.yarnpkg.com/detect-libc/-/detect-libc-1.0.3.tgz#fa137c4bd698edf55cd5cd02ac559f91a4c4ba9b"
   integrity sha1-+hN8S9aY7fVc1c0CrFWfkaTEups=
 
-discord.js@^11.3.2:
+discord.js@^11.4.*:
   version "11.4.2"
   resolved "https://registry.yarnpkg.com/discord.js/-/discord.js-11.4.2.tgz#54586981926521572051f2a30b984aad2b49786e"
   integrity sha512-MDwpu0lMFTjqomijDl1Ed9miMQe6kB4ifKdP28QZllmLv/HVOJXhatRgjS8urp/wBlOfx+qAYSXcdI5cKGYsfg==
@@ -1309,6 +1309,11 @@ eslint-plugin-node@^7.0.1:
     minimatch "^3.0.4"
     resolve "^1.8.1"
     semver "^5.5.0"
+
+eslint-plugin-promise@^4.0.1:
+  version "4.0.1"
+  resolved "https://registry.yarnpkg.com/eslint-plugin-promise/-/eslint-plugin-promise-4.0.1.tgz#2d074b653f35a23d1ba89d8e976a985117d1c6a2"
+  integrity sha512-Si16O0+Hqz1gDHsys6RtFRrW7cCTB6P7p3OJmKp3Y3dxpQE2qwOA7d3xnV+0mBmrPoi0RBnxlCKvqu70te6wjg==
 
 eslint-plugin-standard@^4.0.0:
   version "4.0.0"
