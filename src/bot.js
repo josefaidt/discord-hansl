@@ -5,7 +5,6 @@ import '@babel/polyfill'
 // import path from 'path'
 import Discord from 'discord.js'
 import path from 'path'
-
 // load user libraries
 import lib from './lib'
 import Commands from './bin'
@@ -13,7 +12,7 @@ import Commands from './bin'
 const bot = new Discord.Client()
 
 // if PROD, use dotenv to import environment vars
-if (process.env.NODE_ENV === 'PROD') {
+if (process.env.NODE_ENV !== 'PROD') {
   require('dotenv').load()
 }
 console.log(lib)

@@ -1,7 +1,8 @@
 import { Weather as weather } from '../lib'
-import Weather from 'weather-js'
+// import Weather from 'weather-js'
 
-let general = new weather.general.default()
+const Weather = new weather.general.default()
+const { shapeData, messageCurrentWeather } = Weather
 
 // let wait = async (fn, callback) => {
 //   await fn,
@@ -20,9 +21,16 @@ export default {
       let subcmd = suffix[0]
       let location = suffix[1]
     } else {
-      await general.get(location, async (message, img) => {
-        await msg.channel.send(message, img)
-      })
+      if (location.length === 5 && parseInt(location)) {
+        let zip = location
+        await Weather.geoLookup({ zip }).then(shapeData)
+          .then(msg.channel.send)
+          .catch(console.error)
+        await Weather.get(location, async (message, img) => {
+          await msg.channel.send(message, img)
+        })
+      }
+      // await general.newGet(location)
     }
   }
 }
