@@ -1,49 +1,70 @@
 module.exports = {
-  extends: ['standard'],
-  plugins: ['standard', 'react'],
+  extends: ['standard', 'prettier', 'prettier/standard'],
+  plugins: ['react', 'import', 'standard', 'prettier'],
+  parser: 'babel-eslint',
+  parserOptions: {
+    'ecmaVersion': 8,
+    'ecmaFeatures': {
+      'impliedStrict': true,
+      'classes': true
+    }
+  },
+  'env': {
+    'browser': true,
+    'node': true
+  },
   rules: {
-    'no-var': 'error', // optional, recommended when using es6+
-    'no-unused-vars': 1, // recommended
-    'arrow-spacing': ['error', { 'before': true, 'after': true }], // recommended
-    'indent': ['error', 2, {ArrayExpression: 'first', ObjectExpression: 'first'}],
-    'comma-dangle': ['error', {
-      'objects': 'only-multiline',
-      'arrays': 'only-multiline',
-      'imports': 'never',
-      'exports': 'never',
-      'functions': 'never'
+    'no-var': 2,
+    'no-unused-vars': [1, { 'argsIgnorePattern': 'res|next|^err' }],
+    'no-param-reassign': [2, { 'props': false }],
+    // 'arrow-spacing': [2, { 'before': true, 'after': true }],
+    // 'indent': [2, 2],
+    // 'comma-dangle': [2, {
+    //   'objects': 'only-multiline',
+    //   'arrays': 'only-multiline',
+    //   'imports': 'never',
+    //   'exports': 'never',
+    //   'functions': 'never'
+    // }],
+    'quotes': [2, 'single', {
+      'avoidEscape': true,
+      'allowTemplateLiterals': true
     }],
-    'newline-per-chained-call': ["error", { "ignoreChainWithDepth": 2 }],
-    'linebreak-style': ['error', 'unix'],
+
+    'prefer-const': [2, { 'destructuring': 'all' }],
 
     // options to emulate prettier setup
-    'semi': ['error', 'never'],
-    'max-len': ['error', { 'code': 90 , 'ignoreTemplateLiterals': true, 'ignoreStrings': true}],
-    'template-curly-spacing': ['error', 'always'],
-    'arrow-parens': ['error', 'as-needed'],
+    // 'semi': [2, 'never'],
+    // 'max-len': [2, { 'code': 80 }],
+    // 'template-curly-spacing': [2, 'always'],
+    // 'arrow-parens': [2, 'as-needed'],
 
     // standard.js
-    'space-before-function-paren': ['error', {
-      'named': 'always',
-      'anonymous': 'always',
-      'asyncArrow': 'always'
-    }],
+    // 'space-before-function-paren': [2, {
+    //   'named': 'always',
+    //   'anonymous': 'always',
+    //   'asyncArrow': 'always'
+    // }],
 
     // standard plugin - options
-    'standard/object-curly-even-spacing': ['error', 'either'],
-    'standard/array-bracket-even-spacing': ['error', 'either'],
-    'standard/computed-property-even-spacing': ['error', 'even'],
-    'standard/no-callback-literal': ['error', ['cb', 'callback']],
+    // 'standard/object-curly-even-spacing': [2, 'either'],
+    // 'standard/array-bracket-even-spacing': [2, 'either'],
+    // 'standard/computed-property-even-spacing': [2, 'even'],
+    'standard/no-callback-literal': [2, ['cb', 'callback']],
 
     // react plugin - options
-    'react/jsx-uses-react': 'error',
-    'react/jsx-uses-vars': 'error'
-  },
-  parser: 'babel-eslint',
-  env: {
-    node: true
-  },
-  parserOptions: {
-    'ecmaVersion': 8, // optional, recommended 6+
+    'react/jsx-uses-react': 2,
+    'react/jsx-uses-vars': 2,
+
+    // prettier
+    'prettier/prettier': [2, {
+      'singleQuote': true,
+      'semi': false,
+      'tabWidth': 2,
+      'printWidth': 80,
+      'bracketSpacing': true,
+      'jsxBracketSameLine': true,
+      'arrowParens': 'avoid'
+    }]
   }
 }

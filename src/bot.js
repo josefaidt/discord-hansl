@@ -23,7 +23,7 @@ console.log(lib)
 // console.log('Loader', Loader)
 // console.log(loader)
 
-function hasCommand (value) {
+function hasCommand(value) {
   // return Object.keys(Commands).some(key => Commands[key].name === value)
   if (Commands[value]) {
     return true
@@ -34,25 +34,25 @@ function hasCommand (value) {
 
 bot.on('ready', () => {
   // this event triggers when bot starts successfully
-  console.log(`Logged in as ${ bot.user.tag }!`)
+  console.log(`Logged in as ${bot.user.tag}!`)
   console.log(
-    `Bot has started with ${ bot.users.size } users in ${
+    `Bot has started with ${bot.users.size} users in ${
       bot.channels.size
-    } channels of ${ bot.guilds.size } guilds.`
+    } channels of ${bot.guilds.size} guilds.`
   )
   bot.user
-    .setActivity(`Ascension ${ bot.guilds.size }% Complete`)
+    .setActivity(`Ascension ${bot.guilds.size}% Complete`)
     .catch(console.error)
 })
 
 bot.on('guildCreate', guild => {
   // this event triggers when bot joins a guild
   console.log(
-    `New guild joined: ${ guild.name } (id: ${ guild.id }). This guild has ${
+    `New guild joined: ${guild.name} (id: ${guild.id}). This guild has ${
       guild.memberCount
     } members`
   )
-  bot.user.setActivity(`Ascension ${ bot.guilds.size }% Complete`)
+  bot.user.setActivity(`Ascension ${bot.guilds.size}% Complete`)
 
   if (!guild.roles.hansl) {
     // add system role creation
@@ -71,8 +71,8 @@ bot.on('guldMemberAdd', member => {
 
 bot.on('guildDelete', guild => {
   // this event triggers when bot is removed from a guild
-  console.log(`I have been removed from: ${ guild.name } (id: ${ guild.id })`)
-  bot.user.setActivity(`Ascension ${ bot.guilds.size }% Complete`)
+  console.log(`I have been removed from: ${guild.name} (id: ${guild.id})`)
+  bot.user.setActivity(`Ascension ${bot.guilds.size}% Complete`)
 })
 
 bot.on('message', async message => {
@@ -83,14 +83,14 @@ bot.on('message', async message => {
     message.content[0] === process.env.PREFIX &&
     !message.author.bot
   ) {
-    let command = message.content
+    const command = message.content
       .split(' ')[0]
       .substring(1)
       .toLowerCase()
-    let suffix = message.content.substring(command.length + 2) // add one for the prefix and one for the space
+    const suffix = message.content.substring(command.length + 2) // add one for the prefix and one for the space
 
     if (hasCommand(command)) {
-      let cmd = Commands[command].default
+      const cmd = Commands[command].default
       // let suffix = Suffix.split(' ')
 
       if (cmd.name === 'help') {
@@ -104,8 +104,8 @@ bot.on('message', async message => {
     } else if (command === 'ping') {
       const m = await message.channel.send('Ping?')
       m.edit(
-        `Pong! Latency is ${ m.createdTimestamp -
-          message.createdTimestamp }ms. API Latency is ${ Math.round(bot.ping) }ms`
+        `Pong! Latency is ${m.createdTimestamp -
+          message.createdTimestamp}ms. API Latency is ${Math.round(bot.ping)}ms`
       )
     } else {
       message.channel.send("Oops, don't know that command.")
@@ -119,5 +119,5 @@ bot.on('message', async message => {
 })
 
 // set login token, either from .env or vscode launch.json
-let loginToken = process.env.LOGIN
+const loginToken = process.env.LOGIN
 bot.login(loginToken).catch(console.error)
