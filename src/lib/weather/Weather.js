@@ -4,7 +4,7 @@ import { Attachment } from 'discord.js'
 import { get } from 'http'
 
 export default class Weather extends Command {
-  constructor (name, alias, help, adminOnly) {
+  constructor() {
     super()
     this.name = 'weather'
     this.alias = 'w'
@@ -12,7 +12,7 @@ export default class Weather extends Command {
     this.adminOnly = false
   }
 
-  async get (location, callback) {
+  async get(location, callback) {
     let message
     weather.find(
       { search: location, degreeType: process.env.WEATHER_DEGREE_TYPE },
@@ -27,7 +27,7 @@ export default class Weather extends Command {
           return callback("I can't find that location")
         } else {
           message = this.general(weatherData)
-          let img = new Attachment(weatherData.current.imageUrl)
+          const img = new Attachment(weatherData.current.imageUrl)
           // console.log(weatherData)
           return callback(message, img)
         }
@@ -35,67 +35,77 @@ export default class Weather extends Command {
     )
   }
 
-  general (weatherData) {
+  general(weatherData) {
     const temperature = weatherData.current.temperature + '\xB0' + weatherData.location.degreetype
-    return `Currently in ${ weatherData.location.name } it's ${ temperature }`
+    return `Currently in ${weatherData.location.name} it's ${temperature}`
   }
 
-  image (url) {
+  image(url) {
     const image = new Attachment(url)
     return image
   }
 
-  newGet (location) {
+  newGet(location) {
     return new Promise((resolve, reject) => {
-      get(`http://api.wunderground.com/api/${ process.env.WEATHER_API_KEY }/geolookup/conditions/q/${ location }.json`, resp => {
-        let data = ''
+      get(
+        `http://api.wunderground.com/api/${
+          process.env.WEATHER_API_KEY
+        }/geolookup/conditions/q/${location}.json`,
+        resp => {
+          let data = ''
 
-        // A chunk of data has been recieved.
-        resp.on('data', chunk => {
-          data += chunk
-        })
+          // A chunk of data has been recieved.
+          resp.on('data', chunk => {
+            data += chunk
+          })
 
-        // The whole response has been received. Print out the result.
-        resp.on('end', () => {
-          console.log(JSON.parse(data))
-          resolve(JSON.parse(data))
-        })
-      }).on('error', err => {
+          // The whole response has been received. Print out the result.
+          resp.on('end', () => {
+            console.log(JSON.parse(data))
+            resolve(JSON.parse(data))
+          })
+        }
+      ).on('error', err => {
         console.log('Error: ' + err.message)
       })
     })
   }
 
-  geoLookup ({ city, state, country, zip }) {
+  geoLookup({ city, state, country, zip }) {
     if (zip) {
       return new Promise((resolve, reject) => {
-        get(`http://api.wunderground.com/api/${ process.env.WEATHER_API_KEY }/forecast/geolookup/conditions/q/${ zip }.json`, res => {
-          let data = ''
+        get(
+          `http://api.wunderground.com/api/${
+            process.env.WEATHER_API_KEY
+          }/forecast/geolookup/conditions/q/${zip}.json`,
+          res => {
+            let data = ''
 
-          res.on('data', chunk => {
-            data += chunk
-          })
+            res.on('data', chunk => {
+              data += chunk
+            })
 
-          res.on('end', () => {
-            console.log(JSON.parse(data))
-            resolve(JSON.parse(data))
-          })
-        }).on('error', err => {
+            res.on('end', () => {
+              console.log(JSON.parse(data))
+              resolve(JSON.parse(data))
+            })
+          }
+        ).on('error', err => {
           reject(err)
         })
       })
     }
   }
 
-  shapeData (data) {
+  shapeData(data) {
     return new Promise(resolve => {
       resolve(this.messageCurrentWeather(data.location, data.current_observation))
     })
   }
 
-  messageCurrentWeather (location, currentWeather) {
-    let { city, state } = location
-    let { feelslike_f } = currentWeather
-    return `Currently in ${ city }, ${ state } it feels like ${ feelslike_f }`
+  messageCurrentWeather(location, currentWeather) {
+    const { city, state } = location
+    const { feelslike_f } = currentWeather
+    return `Currently in ${city}, ${state} it feels like ${feelslike_f}`
   }
 }

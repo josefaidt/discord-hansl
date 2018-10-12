@@ -1,21 +1,34 @@
 module.exports = {
-  extends: ['standard', 'prettier', 'prettier/standard'],
-  plugins: ['react', 'import', 'standard', 'prettier'],
+  extends: [
+    'standard',
+    'plugin:react/recommended',
+    'prettier',
+    'prettier/react',
+    'prettier/standard'
+  ],
+  plugins: ['prettier',
+    'import',
+    'react',
+    'standard'
+  ],
   parser: 'babel-eslint',
   parserOptions: {
     'ecmaVersion': 8,
     'ecmaFeatures': {
       'impliedStrict': true,
-      'classes': true
+      'classes': true,
+      'jsx': true
     }
   },
   'env': {
     'browser': true,
-    'node': true
+    'node': true,
+    'es6': true
   },
   rules: {
     'no-var': 2,
     'no-unused-vars': [1, { 'argsIgnorePattern': 'res|next|^err' }],
+    'no-tabs': 2,
     'no-param-reassign': [2, { 'props': false }],
     // 'arrow-spacing': [2, { 'before': true, 'after': true }],
     // 'indent': [2, 2],
@@ -36,7 +49,7 @@ module.exports = {
     // options to emulate prettier setup
     // 'semi': [2, 'never'],
     // 'max-len': [2, { 'code': 80 }],
-    // 'template-curly-spacing': [2, 'always'],
+    // 'template-curly-spacing': [2, 'always'], 
     // 'arrow-parens': [2, 'as-needed'],
 
     // standard.js
@@ -58,13 +71,27 @@ module.exports = {
 
     // prettier
     'prettier/prettier': [2, {
+      'trailingComma': 'none',
       'singleQuote': true,
       'semi': false,
       'tabWidth': 2,
-      'printWidth': 80,
+      'printWidth': 100,
       'bracketSpacing': true,
       'jsxBracketSameLine': true,
       'arrowParens': 'avoid'
     }]
   }
+
+  // overrides: [{
+  //   'files': [ '**/*.js', '**/*.jsx' ],
+  //   'excludedFiles': '*.test.js',
+  //   'rules': {
+  //     // 'standard/computed-property-even-spacing': [2, 'even']
+  //     'space-before-function-paren': [2, {
+  //       'named': 'always',
+  //       'anonymous': 'always',
+  //       'asyncArrow': 'always'
+  //     }],
+  //   }
+  // }]
 }

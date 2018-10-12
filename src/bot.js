@@ -36,21 +36,17 @@ bot.on('ready', () => {
   // this event triggers when bot starts successfully
   console.log(`Logged in as ${bot.user.tag}!`)
   console.log(
-    `Bot has started with ${bot.users.size} users in ${
-      bot.channels.size
-    } channels of ${bot.guilds.size} guilds.`
+    `Bot has started with ${bot.users.size} users in ${bot.channels.size} channels of ${
+      bot.guilds.size
+    } guilds.`
   )
-  bot.user
-    .setActivity(`Ascension ${bot.guilds.size}% Complete`)
-    .catch(console.error)
+  bot.user.setActivity(`Ascension ${bot.guilds.size}% Complete`).catch(console.error)
 })
 
 bot.on('guildCreate', guild => {
   // this event triggers when bot joins a guild
   console.log(
-    `New guild joined: ${guild.name} (id: ${guild.id}). This guild has ${
-      guild.memberCount
-    } members`
+    `New guild joined: ${guild.name} (id: ${guild.id}). This guild has ${guild.memberCount} members`
   )
   bot.user.setActivity(`Ascension ${bot.guilds.size}% Complete`)
 
@@ -60,11 +56,7 @@ bot.on('guildCreate', guild => {
 })
 
 bot.on('guldMemberAdd', member => {
-  lib.core.system.welcome(
-    member.guild,
-    member.user.username,
-    process.env.WELCOME_CHANNEL
-  )
+  lib.core.system.welcome(member.guild, member.user.username, process.env.WELCOME_CHANNEL)
   // add custom message
   // get all text channels for config page, then select ID to mitigate multiple channels of the same name
 })
