@@ -18,12 +18,13 @@ export default {
     if (location.length === 0) {
       msg.channel.send('I need a location').catch(console.error)
     } else if (suffix.length > 1) {
-      let subcmd = suffix[0]
-      let location = suffix[1]
+      const subcmd = suffix[0]
+      const location = suffix[1]
     } else {
       if (location.length === 5 && parseInt(location)) {
-        let zip = location
-        await Weather.geoLookup({ zip }).then(shapeData)
+        const zip = location
+        await Weather.geoLookup({ zip })
+          .then(shapeData)
           .then(msg.channel.send)
           .catch(console.error)
         await Weather.get(location, async (message, img) => {

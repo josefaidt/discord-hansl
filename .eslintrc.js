@@ -27,9 +27,10 @@ module.exports = {
   },
   rules: {
     'no-var': 2,
-    'no-unused-vars': [1, { 'argsIgnorePattern': 'res|next|^err' }],
+    'no-unused-vars': [1, { 'argsIgnorePattern': 'res|next|^err|reject' }],
     'no-tabs': 2,
     'no-param-reassign': [2, { 'props': false }],
+    // 'newline-per-chained-call': 2,
     // 'arrow-spacing': [2, { 'before': true, 'after': true }],
     // 'indent': [2, 2],
     // 'comma-dangle': [2, {
