@@ -1,15 +1,11 @@
-import Command from '../Command'
+import Library from '../Library'
 import weather from 'weather-js'
 import { Attachment } from 'discord.js'
 import { get } from 'http'
 
-export default class Weather extends Command {
+export default class Weather extends Library {
   constructor() {
     super()
-    this.name = 'weather'
-    this.alias = 'w'
-    this.help = 'displays weather information'
-    this.adminOnly = false
     this.getWeather = queryUrl => {
       return new Promise((resolve, reject) => {
         get(queryUrl, res => {
@@ -89,7 +85,7 @@ export default class Weather extends Command {
     })
   }
 
-  geoLookup({ city, state, country, zip }) {
+  geoLookup = ({ city, state, country, zip }) => {
     let queryUrl = `http://api.wunderground.com/api/${
       process.env.WEATHER_API_KEY
     }/forecast/geolookup/conditions/q/`
@@ -107,7 +103,9 @@ export default class Weather extends Command {
     // console.log('shapeData', data)
     const { city, state } = data.location
     const { feelslike_f } = data.current_observation
-    const message = `Currently in ${city}, ${state} it feels like ${feelslike_f}\xB0`
+    const message = `Currently in ${city}, ${state} it feels like ${feelslike_f}\xB0${
+      process.env.WEATHER_DEGREE_TYPE
+    }`
     return new Promise(resolve => {
       resolve(message)
     })

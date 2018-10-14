@@ -6,7 +6,7 @@ import '@babel/polyfill'
 import Discord from 'discord.js'
 import path from 'path'
 // load user libraries
-import lib from './lib'
+import lib from './lib' // temporary use!!
 import Commands from './bin'
 
 const bot = new Discord.Client()
@@ -15,21 +15,24 @@ const bot = new Discord.Client()
 if (process.env.NODE_ENV !== 'PROD') {
   require('dotenv').load()
 }
-console.log(lib)
-// console.log(Commands)
-
-// import Loader from './lib/_loader'
-// let loader = new Loader(lib)
-// console.log('Loader', Loader)
-// console.log(loader)
+console.log('LIBRARY', lib)
+console.log('COMMANDS', Commands)
 
 function hasCommand(value) {
-  // return Object.keys(Commands).some(key => Commands[key].name === value)
-  if (Commands[value]) {
-    return true
-  } else {
-    return false
-  }
+  return new Promise((resolve, reject) => {
+    Commands.forEach(i => {
+      // console.log(i, i.name, i.alias)
+      if (i.name === value || i.alias === value) {
+        resolve(i)
+      }
+    })
+    reject("Oops, I don't know that command.")
+  })
+  // if (Commands[value]) {
+  //   return true
+  // } else {
+  //   return false
+  // }
 }
 
 bot.on('ready', () => {
@@ -81,27 +84,27 @@ bot.on('message', async message => {
       .toLowerCase()
     const suffix = message.content.substring(command.length + 2) // add one for the prefix and one for the space
 
-    if (hasCommand(command)) {
-      const cmd = Commands[command].default
-      // let suffix = Suffix.split(' ')
-
-      if (cmd.name === 'help') {
-        cmd.fn(bot, message, suffix)
-      } else {
-        // console.log(suffix.split(' ')[0])
-        // console.log(suffix)
-        // console.log(cmd)
-        cmd.default(bot, message, suffix)
-      }
-    } else if (command === 'ping') {
-      const m = await message.channel.send('Ping?')
-      m.edit(
-        `Pong! Latency is ${m.createdTimestamp -
-          message.createdTimestamp}ms. API Latency is ${Math.round(bot.ping)}ms`
+    hasCommand(command.toLowerCase())
+      .then(
+        cmdObject => {
+          cmdObject.default(bot, message, suffix)
+        },
+        reason => {
+          message.channel.send(reason)
+        }
       )
-    } else {
-      message.channel.send("Oops, don't know that command.")
-    }
+      .catch(() => {
+        message.channel.send("Oops, don't know that command.")
+      })
+    // } else if (command === 'ping') {
+    //   const m = await message.channel.send('Ping?')
+    //   m.edit(
+    //     `Pong! Latency is ${m.createdTimestamp -
+    //       message.createdTimestamp}ms. API Latency is ${Math.round(bot.ping)}ms`
+    //   )
+    // } else {
+    //   message.channel.send("Oops, don't know that command.")
+    // }
   }
 
   // for fun
