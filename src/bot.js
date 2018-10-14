@@ -12,9 +12,9 @@ import Commands from './bin'
 const bot = new Discord.Client()
 
 // if PROD, use dotenv to import environment vars
-if (process.env.NODE_ENV !== 'PROD') {
-  require('dotenv').load()
-}
+// if (process.env.NODE_ENV !== 'PROD') {
+require('dotenv').load()
+// }
 console.log('LIBRARY', lib)
 console.log('COMMANDS', Commands)
 

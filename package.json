@@ -6,18 +6,25 @@
   "author": "josef",
   "scripts": {
     "start": "node src/bot.js",
-    "build:prod": "rimraf dist && babel src --out-dir dist --env-name PROD; cp .env dist",
-    "build:start": "NODE_ENV=PROD node dist/bot.js",
     "build": "yarn build:prod; yarn build:start",
-    "build:dev": "rimraf tmp && babel src --out-dir tmp --env-name DEV",
+    "build:prod": "rimraf dist && babel src --out-dir dist --env-name PROD",
+    "build:start": "NODE_ENV=PROD node dist/bot.js",
+    "build:dev": "rimraf dist && babel src --out-dir dist --env-name DEV",
+
+    "build:docker": "yarn build:dev; yarn build:docker:image; yarn build:docker:container",
+    "build:docker:image": "docker build --tag josef/hansl:latest --tag josef/hansl:$npm_package_version .",
+    "build:docker:image:remote": "docker build https://github.com/josefaidt/discord-hansl.git",
+    "build:docker:container": "docker stop hansl; docker rm hansl; docker container run -p 3000:3000 --name hansl --hostname APP_DISCORD_HANSL --env-file ./.env josef/hansl:$npm_package_version",
+
     "e": "eslint src",
     "e:c": "eslint --print-config . | eslint-config-prettier-check",
-    "fix": "eslint --fix src",
+    "e:fix": "eslint --fix src",
     "clean": "rimraf tmp dist"
   },
   "dependencies": {
     "discord.js": "^11.4.*",
     "dotenv": "^6.0.0",
+    "@babel/polyfill": "^7.0.0",
     "require-directory": "^2.1.1",
     "weather-js": "^2.0.0"
   },
@@ -28,7 +35,6 @@
     "@babel/plugin-proposal-class-properties": "^7.0.0",
     "@babel/plugin-transform-classes": "^7.1.0",
     "@babel/plugin-transform-modules-commonjs": "^7.1.0",
-    "@babel/polyfill": "^7.0.0",
     "@babel/preset-env": "^7.0.0",
     "babel-eslint": "^10.0.1",
     "eslint": "^5.6.0",

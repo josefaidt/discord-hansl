@@ -15,13 +15,7 @@
 ![dev dependencies](https://img.shields.io/david/dev/josefaidt/discord-hansl.svg?style=flat-square)
 ![License](https://img.shields.io/github/license/josefaidt/discord-hansl.svg?style=flat-square)
 
-
-
-
-A Discord bot built on Node.js using [discordjs](https://discord.js.org/#/) as an all-around housebot.
+A Discord bot built using Node.js and [discordjs](https://discord.js.org/#/) as an a weather-reporting bot.
 
 ## Early Stages
 For information regarding the status of this project, please visit the [trello board](https://trello.com/b/DiDh1BRb) and the [changelog](https://github.com/josefaidt/discord-hansl/blob/master/CHANGELOG.MD).
-
-## Issues or Concerns?
-Create an issue on the [repository](https://github.com/josefaidt/discord-hansl/issues).
