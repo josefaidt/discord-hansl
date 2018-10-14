@@ -3,6 +3,19 @@ All notable changes to the Hansl bot will be documented in this file.
 
 ## [Unreleased]
 ---
+## [0.0.6] - 2018-10-14
+### Changed
+- tweaked babel build process, using classes and class properties
+- removed external directory loader for Commands, built custom
+
+### Added
+- Wunderground API
+  - geolookup
+  - Promise-wrapped class methods
+- Library class for lib modules
+- loading Command class in bin modules for alias
+- ESLint for linting, Prettier plugin for most of the formatting
+
 ## [0.0.5] - 2018-09-22
 ### Changed
 - added babel build process

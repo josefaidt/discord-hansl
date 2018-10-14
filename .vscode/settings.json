@@ -1,0 +1,10 @@
+{
+  "editor.wordWrap": "off",
+  "editor.wordWrapColumn": 90,
+  "editor.tabSize": 2,
+  "javascript.validate.enable": false,
+
+  // recommended
+  "eslint.enable": true,
+  "eslint.autoFixOnSave": true,
+}

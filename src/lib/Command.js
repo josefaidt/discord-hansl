@@ -1,5 +1,5 @@
 export default class Command {
-  constructor(name, alias, help, usage, adminOnly = false) {
+  constructor(name, alias, help, usage = '', adminOnly = false) {
     this.name = name
     this.alias = alias
     this.help = help
