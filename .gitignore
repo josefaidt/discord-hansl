@@ -75,7 +75,8 @@ tmp/
 .old/
 package-lock.json
 
-
+# docker images
+.docker.archive
 
 dist/
 *.afdesign
