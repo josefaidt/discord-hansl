@@ -17,5 +17,26 @@
 
 A Discord bot built using Node.js and [discordjs](https://discord.js.org/#/) as an a weather-reporting bot.
 
+## Docker
+This app includes a `Dockerfile` to build an image off of, as long as you have a valid `.env` file to run using. The scripts to build are saved in `package.json`
+
+```json5
+"scripts": {
+  "build:docker": "yarn build:prod; yarn build:docker:image; yarn build:docker:container",
+  "build:docker:image": "docker build --tag josef/hansl:latest --tag josef/hansl:$npm_package_version .",
+  "build:docker:image:remote": "docker build https://github.com/josefaidt/discord-hansl.git",
+  "build:docker:container": "docker stop hansl; docker rm hansl; docker container run -p 3000:3000 --name hansl --hostname APP_DISCORD_HANSL --env-file ./.env josef/hansl:$npm_package_version"
+}
+```
+
+### Building Using Provided Scripts
+
+Ensure you have both yarn and Docker installed in order to successfully build the image and container.
+- `build:docker:image`: builds the Docker image using the local assets
+- `build:docker:image:remote`: builds the Docker image using the master branch on the repository
+- `build:docker:container`: stops and removes existing containers using the name `hansl`, and builds a new container using the pulled image.
+  - `env-file` (*required*): specify using an absolute path your environment dotfile based off provided `.env.example`
+- `build:docker`: runs the production build process, builds the Docker image from local assets, builds Docker container
+
 ## Early Stages
 For information regarding the status of this project, please visit the [trello board](https://trello.com/b/DiDh1BRb) and the [changelog](https://github.com/josefaidt/discord-hansl/blob/master/CHANGELOG.MD).
