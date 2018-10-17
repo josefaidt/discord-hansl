@@ -12,6 +12,7 @@ module.exports = function(api) {
   const plugins = [
     '@babel/plugin-proposal-class-properties',
     '@babel/plugin-transform-classes',
+    '@babel/plugin-transform-parameters',
     ['@babel/plugin-transform-modules-commonjs', {
       allowTopLevelThis: true
     }]
