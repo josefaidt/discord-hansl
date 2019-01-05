@@ -14,4 +14,15 @@ export default class Library {
     this.isSubCommand = isSubCommand
     this.subCommand = new Command(subCommandClassInfo)
   }
+
+  static getNeedsAPIKey() {
+    return this.needsAPIKey
+    // return new Promise((resolve, reject) => {
+    //   if (this.needsAPIKey === undefined) {
+    //     reject(this.needsAPIKey)
+    //   } else {
+    //     resolve(this.needsAPIKey)
+    //   }
+    // })
+  }
 }

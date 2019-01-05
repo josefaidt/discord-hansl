@@ -31,12 +31,12 @@ export default class Weather extends Library {
     // this.shapeData = this.shapeData.bind(this)
   }
 
-  getName() {
+  static getName() {
     return this.name
   }
 
   getNeedsAPIKey() {
-    return super.needsAPIKey
+    return super.getNeedsAPIKey()
     // return new Promise((resolve, reject) => {
     //   if (this.needsAPIKey === undefined) {
     //     reject(this.needsAPIKey)
