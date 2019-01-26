@@ -1,10 +1,18 @@
-import Location from './Weather.Location'
-export default class Forecast extends Location {
-  constructor({ zip, city, state, country }) {
+import Command from '../Command'
+import Library from '../Library'
+import { RichEmbed } from 'discord.js'
+
+export default class Forecast extends Library {
+  constructor() {
     super()
-    this.location = new Location({ zip, city, state, country })
+    this.name = 'forecast'
+    this.alias = 'f'
   }
-  getForecast = weatherData => {
-    return new Promise((resolve, reject) => {})
+
+  getSimpleForecast = forecastData => {
+    return new Promise((resolve, reject) => {
+      const message = new RichEmbed(forecastData.simpleforecast.forecastday[0].icon_url)
+      resolve(message)
+    })
   }
 }

@@ -3,9 +3,14 @@ import weather from 'weather-js'
 import { Attachment } from 'discord.js'
 import { get } from 'http'
 
+import Forecast from './Weather.Forecast'
+
 export default class Weather extends Library {
-  constructor() {
-    super()
+  constructor(name, needsAPIKey) {
+    super(name, needsAPIKey)
+    this.name = 'Weather'
+    // this.needsAPIKey = true
+    this.subCommands = [new Forecast()]
     this.getWeather = queryUrl => {
       return new Promise((resolve, reject) => {
         get(queryUrl, res => {
@@ -24,6 +29,21 @@ export default class Weather extends Library {
     }
     // this.messageCurrentWeather = this.messageCurrentWeather.bind(this)
     // this.shapeData = this.shapeData.bind(this)
+  }
+
+  static getName() {
+    return this.name
+  }
+
+  getNeedsAPIKey() {
+    return super.getNeedsAPIKey()
+    // return new Promise((resolve, reject) => {
+    //   if (this.needsAPIKey === undefined) {
+    //     reject(this.needsAPIKey)
+    //   } else {
+    //     resolve(this.needsAPIKey)
+    //   }
+    // })
   }
 
   async get(location, callback) {
@@ -97,6 +117,10 @@ export default class Weather extends Library {
       queryUrl += `${country}/${city}.json`
     }
     return this.getWeather(queryUrl)
+  }
+
+  forecast = ({ forecastData }) => {
+    return this.subcommands.Forecast.getSimpleForecast(forecastData)
   }
 
   shapeData = data => {

@@ -8,10 +8,16 @@ module.exports = function(api) {
   //     }
   //   }]
   // ]
-  const presets = ['@babel/preset-env']
+  const presets = [['@babel/preset-env', {
+    targets: {
+      node: true
+    },
+    modules: 'commonjs'
+  }]]
   const plugins = [
     '@babel/plugin-proposal-class-properties',
     '@babel/plugin-transform-classes',
+    '@babel/plugin-transform-parameters',
     ['@babel/plugin-transform-modules-commonjs', {
       allowTopLevelThis: true
     }]
