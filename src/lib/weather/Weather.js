@@ -1,9 +1,9 @@
-import Library from '../Library'
-import weather from 'weather-js'
-import { Attachment } from 'discord.js'
-import { get } from 'http'
+const { get } = require('http')
+const weather = require('weather-js')
+const { Attachment } = require('discord.js')
+const Library = require('../Library')
 
-export default class Weather extends Library {
+class Weather extends Library {
   constructor() {
     super()
     this.getWeather = queryUrl => {
@@ -117,3 +117,5 @@ export default class Weather extends Library {
     return `Currently in ${city}, ${state} it feels like ${feelslike_f}\xB0`
   }
 }
+
+module.exports = new Weather()

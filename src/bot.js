@@ -1,22 +1,12 @@
-'use strict'
-import '@babel/polyfill'
-// load and initialize Discord.js library
-// import Discord from 'discord.js'
-// import path from 'path'
-import Discord from 'discord.js'
-import path from 'path'
-// load user libraries
-import lib from './lib' // temporary use!!
-import Commands from './bin'
+const path = require('path')
+const Discord = require('discord.js')
+const ENV = require('./.config/dev')
+// const lib = require('./lib') // temporary use!!
+// const bin = require('./bin')
 
 const bot = new Discord.Client()
 
-// if PROD, use dotenv to import environment vars
-// if (process.env.NODE_ENV !== 'PROD') {
-require('dotenv').load()
-// }
-console.log('LIBRARY', lib)
-console.log('COMMANDS', Commands)
+// console.log('LIBRARY', lib)
 
 function hasCommand(value) {
   return new Promise((resolve, reject) => {
@@ -28,11 +18,6 @@ function hasCommand(value) {
     })
     reject("Oops, I don't know that command.")
   })
-  // if (Commands[value]) {
-  //   return true
-  // } else {
-  //   return false
-  // }
 }
 
 bot.on('ready', () => {
@@ -54,12 +39,12 @@ bot.on('guildCreate', guild => {
   bot.user.setActivity(`Ascension ${bot.guilds.size}% Complete`)
 
   if (!guild.roles.hansl) {
-    // add system role creation
+    // TODO add system role creation
   }
 })
 
 bot.on('guldMemberAdd', member => {
-  lib.core.system.welcome(member.guild, member.user.username, process.env.WELCOME_CHANNEL)
+  // lib.core.system.welcome(member.guild, member.user.username, ENV.WELCOME_CHANNEL)
   // add custom message
   // get all text channels for config page, then select ID to mitigate multiple channels of the same name
 })
@@ -75,7 +60,7 @@ bot.on('message', async message => {
   // how do we handle mentions? (ex: @voltron)
   if (
     message.author.id !== bot.user.id &&
-    message.content[0] === process.env.PREFIX &&
+    message.content[0] === ENV.PREFIX &&
     !message.author.bot
   ) {
     const command = message.content
@@ -113,6 +98,6 @@ bot.on('message', async message => {
   }
 })
 
-// set login token, either from .env or vscode launch.json
-const loginToken = process.env.LOGIN
+// set login token, either from .ENV or vscode launch.json
+const loginToken = ENV.LOGIN
 bot.login(loginToken).catch(console.error)

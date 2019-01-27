@@ -1,13 +1,4 @@
-module.exports = function(api) {
-  // const presets = [
-  //   ['@babel/preset-env', 
-  //   {
-  //     targets: {
-  //       esmodules: true,
-  //       node: true
-  //     }
-  //   }]
-  // ]
+module.exports = api => {
   const presets = ['@babel/preset-env']
   const plugins = [
     '@babel/plugin-proposal-class-properties',
