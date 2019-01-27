@@ -6,8 +6,6 @@ const ENV = require('./.config/dev')
 
 const bot = new Discord.Client()
 
-// console.log('LIBRARY', lib)
-
 function hasCommand(value) {
   return new Promise((resolve, reject) => {
     Commands.forEach(i => {

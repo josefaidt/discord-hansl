@@ -6,11 +6,7 @@
   "author": "josef",
   "scripts": {
     "start": "node src/bot.js",
-    "test": "yarn webpack --config config/webpack.config.js --mode development",
-    "build": "yarn build:prod; yarn build:start",
-    "build:prod": "rimraf dist && babel src --out-dir dist --env-name PROD",
-    "build:start": "NODE_ENV=PROD node dist/bot.js",
-    "build:dev": "rimraf dist && babel src --out-dir dist --env-name DEV",
+    "build": "yarn webpack --config config/webpack.config.js --mode production",
     "build:docker": "yarn build:dev; yarn build:docker:image; yarn build:docker:container",
     "build:docker:image": "docker build --tag josef/hansl:latest --tag josef/hansl:$npm_package_version .",
     "build:docker:image:remote": "docker build https://github.com/josefaidt/discord-hansl.git",
