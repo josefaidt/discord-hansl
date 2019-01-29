@@ -4,7 +4,7 @@ import WeatherLib from '../lib/Weather/Weather'
 const weather = new WeatherLib()
 const { shapeData, messageCurrentWeather } = weather
 
-export default class Weather extends Command {
+class Weather extends Command {
   constructor() {
     super()
     this.name = 'weather'
@@ -65,3 +65,5 @@ export default class Weather extends Command {
     }
   }
 }
+
+exports = new Weather()

@@ -50,7 +50,7 @@ class Weather extends Library {
   }
 
   general(weatherData) {
-    const temperature = weatherData.current.temperature + '\xB0' + weatherData.location.degreetype
+    const temperature = `${weatherData.current.temperature  }\xB0${  weatherData.location.degreetype}`
     return `Currently in ${weatherData.location.name} it's ${temperature}`
   }
 
@@ -80,7 +80,7 @@ class Weather extends Library {
           })
         }
       ).on('error', err => {
-        console.log('Error: ' + err.message)
+        console.log(`Error: ${  err.message}`)
       })
     })
   }
@@ -118,4 +118,4 @@ class Weather extends Library {
   }
 }
 
-module.exports = new Weather()
+exports = new Weather()

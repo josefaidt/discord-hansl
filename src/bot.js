@@ -1,8 +1,6 @@
 const path = require('path')
 const Discord = require('discord.js')
 const ENV = require('./.config/dev')
-// const lib = require('./lib') // temporary use!!
-// const bin = require('./bin')
 
 const bot = new Discord.Client()
 
@@ -65,7 +63,8 @@ bot.on('message', async message => {
       .split(' ')[0]
       .substring(1)
       .toLowerCase()
-    const suffix = message.content.substring(command.length + 2) // add one for the prefix and one for the space
+    // add one for the prefix and one for the space
+    const suffix = message.content.substring(command.length + 2)
 
     hasCommand(command.toLowerCase())
       .then(
@@ -79,15 +78,6 @@ bot.on('message', async message => {
       .catch(() => {
         message.channel.send("Oops, don't know that command.")
       })
-    // } else if (command === 'ping') {
-    //   const m = await message.channel.send('Ping?')
-    //   m.edit(
-    //     `Pong! Latency is ${m.createdTimestamp -
-    //       message.createdTimestamp}ms. API Latency is ${Math.round(bot.ping)}ms`
-    //   )
-    // } else {
-    //   message.channel.send("Oops, don't know that command.")
-    // }
   }
 
   // for fun
@@ -96,6 +86,5 @@ bot.on('message', async message => {
   }
 })
 
-// set login token, either from .ENV or vscode launch.json
 const loginToken = ENV.LOGIN
 bot.login(loginToken).catch(console.error)
