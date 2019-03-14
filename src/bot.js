@@ -1,20 +1,23 @@
 const path = require('path')
 const Discord = require('discord.js')
 const ENV = require('./.config/dev')
+const commands = require('./bin')
+
+console.log(commands)
 
 const bot = new Discord.Client()
 
-function hasCommand(value) {
-  return new Promise((resolve, reject) => {
-    Commands.forEach(i => {
-      // console.log(i, i.name, i.alias)
-      if (i.name === value || i.alias === value) {
-        resolve(i)
-      }
-    })
-    reject("Oops, I don't know that command.")
-  })
-}
+// const hasCommand = value => {
+//   return new Promise((resolve, reject) => {
+//     Commands.forEach(i => {
+//       // console.log(i, i.name, i.alias)
+//       if (i.name === value || i.alias === value) {
+//         resolve(i)
+//       }
+//     })
+//     reject("Oops, I don't know that command.")
+//   })
+// }
 
 bot.on('ready', () => {
   // this event triggers when bot starts successfully
@@ -27,24 +30,6 @@ bot.on('ready', () => {
   bot.user.setActivity(`Ascension ${bot.guilds.size}% Complete`).catch(console.error)
 })
 
-bot.on('guildCreate', guild => {
-  // this event triggers when bot joins a guild
-  console.log(
-    `New guild joined: ${guild.name} (id: ${guild.id}). This guild has ${guild.memberCount} members`
-  )
-  bot.user.setActivity(`Ascension ${bot.guilds.size}% Complete`)
-
-  if (!guild.roles.hansl) {
-    // TODO add system role creation
-  }
-})
-
-bot.on('guldMemberAdd', member => {
-  // lib.core.system.welcome(member.guild, member.user.username, ENV.WELCOME_CHANNEL)
-  // add custom message
-  // get all text channels for config page, then select ID to mitigate multiple channels of the same name
-})
-
 bot.on('guildDelete', guild => {
   // this event triggers when bot is removed from a guild
   console.log(`I have been removed from: ${guild.name} (id: ${guild.id})`)
@@ -53,7 +38,6 @@ bot.on('guildDelete', guild => {
 
 bot.on('message', async message => {
   // ignore messages from bot, empty commands, and other bots
-  // how do we handle mentions? (ex: @voltron)
   if (
     message.author.id !== bot.user.id &&
     message.content[0] === ENV.PREFIX &&
@@ -66,18 +50,17 @@ bot.on('message', async message => {
     // add one for the prefix and one for the space
     const suffix = message.content.substring(command.length + 2)
 
-    hasCommand(command.toLowerCase())
-      .then(
-        cmdObject => {
-          cmdObject.default(bot, message, suffix)
-        },
-        reason => {
-          message.channel.send(reason)
-        }
-      )
-      .catch(() => {
-        message.channel.send("Oops, don't know that command.")
-      })
+    console.log('-------------------------')
+    console.log(`COMMAND: ${command}`)
+    console.log(`SUFFIX: ${suffix}`)
+    console.log('-------------------------')
+
+    if (commands.filter(c => c.name === command)) {
+      const [{ handleCommand }] = commands.filter(c => c.name === command)
+      handleCommand(bot, message, suffix)
+    } else {
+      message.channel.send("Oops, don't know that command.")
+    }
   }
 
   // for fun
