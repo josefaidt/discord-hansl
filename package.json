@@ -9,7 +9,7 @@
     "url": "https://josefaidt.me"
   },
   "scripts": {
-    "start": "node src/bot.js",
+    "start": "NODE_ENV=dev node src/bot.js",
     "build": "yarn webpack --config config/webpack.config.js --mode production",
     "build:docker": "yarn build:dev; yarn build:docker:image; yarn build:docker:container",
     "build:docker:image": "docker build --tag josef/hansl:latest --tag josef/hansl:$npm_package_version .",

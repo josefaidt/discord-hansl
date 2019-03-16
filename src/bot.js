@@ -1,6 +1,6 @@
 const path = require('path')
 const Discord = require('discord.js')
-const ENV = require('./.config/dev')
+const ENV = require('./.config/env.dev')
 const commands = require('./bin')
 
 console.log(commands)
@@ -64,9 +64,9 @@ bot.on('message', async message => {
   }
 
   // for fun
-  if (message.content.toLowerCase() === 'ping') {
-    message.reply('Pong!')
-  }
+  // if (message.content.toLowerCase() === 'ping') {
+  //   message.reply('Pong!')
+  // }
 })
 
 const loginToken = ENV.LOGIN

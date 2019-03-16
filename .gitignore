@@ -29,4 +29,5 @@ yarn-error.log*
 /build
 
 # secrets
-/src/.config
+/src/.config/*
+!/src/.config/env.sample.js
