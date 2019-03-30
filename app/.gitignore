@@ -1,0 +1,5 @@
+/node_modules
+
+# secrets
+/.config/*
+!/.config/env.sample.js

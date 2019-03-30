@@ -1,42 +1,31 @@
 {
-  "name": "discord-hansl",
-  "version": "0.1.0-alpha.2",
+  "name": "@hansl/root",
+  "private": true,
+  "version": "0.1.0-alpha.3",
   "description": "My Node.js Discord bot",
-  "main": "bot.js",
   "author": {
     "name": "Josef Aidt",
     "email": "josef.aidt@gmail.com",
     "url": "https://josefaidt.me"
   },
   "scripts": {
-    "start": "NODE_ENV=dev node src/bot.js",
-    "build": "yarn webpack --config config/webpack.config.js --mode production",
-    "build:docker": "yarn build:dev; yarn build:docker:image; yarn build:docker:container",
-    "build:docker:image": "docker build --tag josef/hansl:latest --tag josef/hansl:$npm_package_version .",
-    "build:docker:image:remote": "docker build https://github.com/josefaidt/discord-hansl.git",
-    "build:docker:container": "docker stop hansl; docker rm hansl; docker container run -p 3000:3000 --name hansl --hostname APP_DISCORD_HANSL --env-file ./.env josef/hansl:$npm_package_version",
-    "lint": "eslint --config config/.eslintrc.js src",
-    "lint:fix": "eslint --fix --config config/.eslintrc.js src",
-    "lint:check": "eslint --print-config . | eslint-config-prettier-check"
-  },
-  "dependencies": {
-    "discord.js": "^11.4.2",
-    "weather-js": "^2.0.0"
+    "start": "yarn workspace @hansl/app run start",
+    "build": "yarn workspace @hansl/app run build",
+    "lint": "eslint --config .config/.eslintrc.js .",
+    "lint:fix": "eslint --fix --config .config/.eslintrc.js .",
+    "clean": "rimraf node_modules **/node_modules",
+    "reload": "yarn clean; yarn install"
   },
   "devDependencies": {
-    "@babel/cli": "^7.2.3",
-    "@babel/core": "^7.3.4",
-    "@babel/node": "^7.2.2",
-    "@babel/plugin-proposal-class-properties": "^7.3.4",
-    "@babel/plugin-transform-classes": "^7.3.4",
-    "@babel/preset-env": "^7.3.4",
     "@josefaidt/eslint-config": "^0.1.4",
     "babel-eslint": "^10.0.1",
     "eslint": "^5.15.1",
-    "webpack": "^4.29.6",
-    "webpack-cli": "^3.2.3",
-    "webpack-node-externals": "^1.7.2"
+    "rimraf": "^2.6.3"
   },
   "repository": "https://github.com/josefaidt/discord-hansl.git",
-  "license": "MIT"
+  "license": "MIT",
+  "workspaces": [
+    "packages/**",
+    "app"
+  ]
 }

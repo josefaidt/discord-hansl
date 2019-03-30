@@ -1,10 +1,33 @@
 # Change Log
 
 All notable changes to the Hansl bot will be documented in this file.
+**NOTE**: All changes documented are related to @hansl/app unless specified otherwise
+
+## Types of changes:
+
+| Tag           | Type                                                 |
+|---------------|------------------------------------------------------|
+| `PKGS`        | Packages found in `packages/`                        |
+| `INFRA`       | Changes related to the infrastructure of the program |
+| `APP` or none | `@hansl/app`                                         |
 
 ## [Unreleased]
 
 ---
+
+## [0.1.0-alpha.3] - 2019-03-30
+
+### Added
+
+- better error handling w/ promises
+- [PKGS] add @hansl/logger
+
+### Changed
+
+- [INFRA] directory structure -> monorepo
+- promisifyed command getter
+- removed old weather api methods, add graphql-request for new weather api, nWeather
+
 
 ## [0.1.0-alpha.1] - 2019-01-26
 

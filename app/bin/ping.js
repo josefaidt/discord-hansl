@@ -5,7 +5,8 @@ const config = {
 }
 
 const handleCommand = (bot, msg, suffix) => {
-  msg.reply('Pong!').catch(console.error)
+  // msg.reply('Pong!').catch(console.error)
+  return 'Pong!'
 }
 
 module.exports = {

@@ -8,6 +8,6 @@
   "eslint.enable": true,
   "eslint.autoFixOnSave": true,
   "eslint.options": {
-    "configFile": "config/.eslintrc.js"
+    "configFile": ".config/.eslintrc.js"
   }
 }
