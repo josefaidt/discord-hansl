@@ -28,7 +28,6 @@ All notable changes to the Hansl bot will be documented in this file.
 - promisifyed command getter
 - removed old weather api methods, add graphql-request for new weather api, nWeather
 
-
 ## [0.1.0-alpha.1] - 2019-01-26
 
 ### Changed
