@@ -3,3 +3,5 @@
 # secrets
 /.config/*
 !/.config/env.sample.js
+.env
+.env.dev

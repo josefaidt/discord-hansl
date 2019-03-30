@@ -15,6 +15,17 @@ All notable changes to the Hansl bot will be documented in this file.
 
 ---
 
+## [0.1.0-alpha.4] - 2019-03-30
+
+### Added
+
+- working weather integration
+  - currentWeather
+
+### Changed
+
+- importing js dotenv files -> dotenv
+
 ## [0.1.0-alpha.3] - 2019-03-30
 
 ### Added

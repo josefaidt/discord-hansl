@@ -4,9 +4,11 @@ const config = {
   description: 'play table tennis',
 }
 
-const handleCommand = (bot, msg, suffix) => {
-  // msg.reply('Pong!').catch(console.error)
-  return 'Pong!'
+const handleCommand = suffix => {
+  return new Promise(resolve => {
+    // msg.reply('Pong!').catch(console.error)
+    resolve('Pong!')
+  })
 }
 
 module.exports = {
