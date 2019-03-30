@@ -3,7 +3,7 @@
 All notable changes to the Hansl bot will be documented in this file.
 **NOTE**: All changes documented are related to @hansl/app unless specified otherwise
 
-## Types of changes:
+## Types of changes
 
 | Tag           | Type                                                 |
 |---------------|------------------------------------------------------|
