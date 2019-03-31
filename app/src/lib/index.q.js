@@ -1,7 +1,11 @@
-const city = require('./currentWeather/city.q')
-const zip = require('./currentWeather/zip.q')
+const currentWeather = require('./currentWeather')
+const forecast = require('./forecast')
 
 module.exports = {
-  city,
-  zip,
+  currentWeather: {
+    ...currentWeather,
+  },
+  forecast: {
+    ...forecast,
+  },
 }

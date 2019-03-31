@@ -1,11 +1,11 @@
 {
   "name": "@hansl/app",
   "private": false,
-  "version": "0.1.0-alpha.5",
+  "version": "0.1.0-alpha.6",
   "main": "public/app.bundle.js",
   "license": "MIT",
   "scripts": {
-    "start": "node -r dotenv/config public/app.bundle.js dotenv_config_path=.env",
+    "start": "node -r dotenv/config src/app.js dotenv_config_path=.env",
     "start:prod": "node -r dotenv/config src/app.js dotenv_config_path=.env",
     "start:dev": "node -r dotenv/config src/app.js dotenv_config_path=.env.dev",
     "build": "webpack -c webpack.config.js",

@@ -1,4 +1,4 @@
-const query = require('../lib/index.q')
+const query = require('../lib/index.q').currentWeather
 
 const config = {
   name: 'weather',

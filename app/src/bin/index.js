@@ -1,7 +1,8 @@
 const weather = require('./weather')
 const ping = require('./ping')
+const forecast = require('./forecast')
 
-const commands = [weather, ping]
+const commands = [weather, ping, forecast]
 
 const hasCommand = input => {
   return new Promise((resolve, reject) => {

@@ -15,6 +15,15 @@ All notable changes to the Hansl bot will be documented in this file.
 
 ---
 
+## [0.1.0-alpha.6] - 2019-03-31
+
+### Added
+
+- basic forecast integration
+  - forecast queries (zip, city)
+  - data helpers
+  - discord message
+
 ## [0.1.0-alpha.5] - 2019-03-31
 
 ### Added
