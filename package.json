@@ -1,7 +1,7 @@
 {
   "name": "@hansl/root",
   "private": true,
-  "version": "0.1.0",
+  "version": "0.1.0-rc.1",
   "description": "My Node.js Discord bot",
   "author": {
     "name": "Josef Aidt",
@@ -12,15 +12,15 @@
     "start": "yarn workspace @hansl/app run start",
     "start:dev": "yarn workspace @hansl/app run start:dev",
     "build": "yarn workspace @hansl/app run build",
-    "deploy": "now",
+    "deploy": "yarn build:docker:image; docker push josefaidt/hansl:$npm_package_version",
     "lint": "eslint --config .config/.eslintrc.js .",
     "lint:fix": "eslint --fix --config .config/.eslintrc.js .",
     "clean": "rimraf node_modules **/node_modules",
     "reload": "yarn clean; yarn install",
     "build:docker": "yarn build:docker:image; yarn build:docker:container",
-    "build:docker:image": "docker build --tag josef/hansl:latest --tag josef/hansl:$npm_package_version .",
+    "build:docker:image": "docker build --tag josefaidt/hansl:latest --tag josefaidt/hansl:$npm_package_version .",
     "build:docker:image:remote": "docker build https://github.com/josefaidt/discord-hansl.git",
-    "build:docker:container": "docker container run -p 3000:3000 --name hansl --hostname APP_DISCORD_HANSL --env-file ./app/.env josef/hansl:$npm_package_version"
+    "build:docker:container": "docker container run -p 3000:3000 --name hansl --hostname APP_DISCORD_HANSL --env-file ./app/.env josefaidt/hansl:$npm_package_version"
   },
   "devDependencies": {
     "@josefaidt/eslint-config": "^0.1.4",

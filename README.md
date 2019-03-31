@@ -17,20 +17,16 @@
 
 A Discord bot built using Node.js, [discordjs](https://discord.js.org/#/), and a custom GraphQL weather endpoint - [nWeather](https://github.com/josefaidt/nWeather) as a weather-reporting bot.
 
-## ZEIT NOW
-
-*Coming Soon!*
-
-## Docker *(deprecated)*
+## Docker
 
 This app includes a `Dockerfile` to build an image off of, as long as you have a valid `.env` file to run using. The scripts to build are saved in `package.json`
 
 ```json5
 "scripts": {
-  "build:docker": "yarn build:prod; yarn build:docker:image; yarn build:docker:container",
-  "build:docker:image": "docker build --tag josef/hansl:latest --tag josef/hansl:$npm_package_version .",
+  "build:docker": "yarn build:docker:image; yarn build:docker:container",
+  "build:docker:image": "docker build --tag josefaidt/hansl:latest --tag josefaidt/hansl:$npm_package_version .",
   "build:docker:image:remote": "docker build https://github.com/josefaidt/discord-hansl.git",
-  "build:docker:container": "docker stop hansl; docker rm hansl; docker container run -p 3000:3000 --name hansl --hostname APP_DISCORD_HANSL --env-file ./.env josef/hansl:$npm_package_version"
+  "build:docker:container": "docker container run -p 3000:3000 --name hansl --hostname APP_DISCORD_HANSL --env-file ./app/.env josefaidt/hansl:$npm_package_version"
 }
 ```
 
