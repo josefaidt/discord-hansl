@@ -1,0 +1,22 @@
+{
+  "Command Config": {
+		"prefix": "cc",
+		"body": [
+			"const config = {",
+			" name: '$1',",
+			" aliases: ['$2'],",
+			" description: '$3',",
+			"}",
+			"",
+			"const handleCommand = async (bot, msg, suffix) => {",
+			"  $4",
+			"}",
+			"",
+			"module.exports = {",
+			"  ...config,",
+			"  handleCommand,",
+			"}"
+    ],
+		"description": "expand channel send"
+	}
+}

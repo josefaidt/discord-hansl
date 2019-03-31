@@ -9,10 +9,10 @@
       "request": "launch",
       "args": [],
       "name": "Launch Program",
-      "program": "${workspaceFolder}/tmp/bot.js",
-      "envFile": "${workspaceFolder}/.env.dev",
-      "sourceMaps": true,
-      "preLaunchTask": "npm: build:dev"
+      "program": "${workspaceFolder}/src/bot.js",
+      // "envFile": "${workspaceFolder}/.env.dev",
+      // "sourceMaps": true,
+      // "preLaunchTask": "npm: build:dev"
     }
   ]
 }

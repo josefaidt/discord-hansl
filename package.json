@@ -1,52 +1,33 @@
 {
-  "name": "discord-hansl",
-  "version": "0.0.6",
+  "name": "@hansl/root",
+  "private": true,
+  "version": "0.1.0-alpha.6",
   "description": "My Node.js Discord bot",
-  "main": "bot.js",
-  "author": "josef",
-  "scripts": {
-    "start": "node src/bot.js",
-    "build": "yarn build:prod; yarn build:start",
-    "build:prod": "rimraf dist && babel src --out-dir dist --env-name PROD",
-    "build:start": "NODE_ENV=PROD node dist/bot.js",
-    "build:dev": "rimraf tmp && babel src --out-dir tmp --env-name DEV",
-    "build:docker": "yarn build:dev; yarn build:docker:image; yarn build:docker:container",
-    "build:docker:image": "docker build --tag josef/hansl:latest --tag josef/hansl:$npm_package_version .",
-    "build:docker:image:remote": "docker build https://github.com/josefaidt/discord-hansl.git",
-    "build:docker:container": "docker stop hansl; docker rm hansl; docker container run -p 3000:3000 --name hansl --hostname APP_DISCORD_HANSL --env-file ./.env josef/hansl:$npm_package_version",
-    "e": "eslint src",
-    "e:c": "eslint --print-config . | eslint-config-prettier-check",
-    "e:fix": "eslint --fix src",
-    "clean": "rimraf tmp dist"
+  "author": {
+    "name": "Josef Aidt",
+    "email": "josef.aidt@gmail.com",
+    "url": "https://josefaidt.me"
   },
-  "dependencies": {
-    "@babel/polyfill": "^7.2.5",
-    "discord.js": "^11.4.*",
-    "dotenv": "^6.2.0",
-    "weather-js": "^2.0.0"
+  "scripts": {
+    "start": "yarn workspace @hansl/app run start",
+    "start:dev": "yarn workspace @hansl/app run start:dev",
+    "build": "yarn workspace @hansl/app run build",
+    "deploy": "now",
+    "lint": "eslint --config .config/.eslintrc.js .",
+    "lint:fix": "eslint --fix --config .config/.eslintrc.js .",
+    "clean": "rimraf node_modules **/node_modules",
+    "reload": "yarn clean; yarn install"
   },
   "devDependencies": {
-    "@babel/cli": "^7.2.3",
-    "@babel/core": "^7.2.2",
-    "@babel/node": "^7.2.2",
-    "@babel/plugin-proposal-class-properties": "^7.2.3",
-    "@babel/plugin-transform-classes": "^7.2.2",
-    "@babel/plugin-transform-modules-commonjs": "^7.2.0",
-    "@babel/plugin-transform-parameters": "^7.2.0",
-    "@babel/preset-env": "^7.2.3",
+    "@josefaidt/eslint-config": "^0.1.4",
     "babel-eslint": "^10.0.1",
-    "eslint": "^5.12.0",
-    "eslint-config-prettier": "^3.3.0",
-    "eslint-config-standard": "^12.0.0",
-    "eslint-plugin-import": "^2.14.0",
-    "eslint-plugin-node": "^8.0.1",
-    "eslint-plugin-prettier": "^3.0.1",
-    "eslint-plugin-promise": "^4.0.1",
-    "eslint-plugin-react": "^7.12.3",
-    "eslint-plugin-standard": "^4.0.0",
-    "prettier": "^1.15.3",
+    "eslint": "^5.15.1",
     "rimraf": "^2.6.3"
   },
   "repository": "https://github.com/josefaidt/discord-hansl.git",
-  "license": "MIT"
+  "license": "MIT",
+  "workspaces": [
+    "packages/**",
+    "app"
+  ]
 }
