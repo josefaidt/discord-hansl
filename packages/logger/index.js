@@ -1,4 +1,4 @@
-const chalk = process.env.NODE_ENV === 'PRODUCTION' ? require('chalk') : null
+const chalk = process.env.NODE_ENV === 'PRODUCTION' ? null : require('chalk')
 
 const logger = phrase => {
   const d = new Date()
