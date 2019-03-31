@@ -5,3 +5,5 @@
 !/.config/env.sample.js
 .env
 .env.dev
+
+/public

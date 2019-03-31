@@ -12,6 +12,7 @@
     "start": "yarn workspace @hansl/app run start",
     "start:dev": "yarn workspace @hansl/app run start:dev",
     "build": "yarn workspace @hansl/app run build",
+    "deploy": "now -e NODE_ENV=PRODUCTION",
     "lint": "eslint --config .config/.eslintrc.js .",
     "lint:fix": "eslint --fix --config .config/.eslintrc.js .",
     "clean": "rimraf node_modules **/node_modules",

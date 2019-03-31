@@ -15,6 +15,14 @@ All notable changes to the Hansl bot will be documented in this file.
 
 ---
 
+## [0.1.0-alpha.5] - 2019-03-31
+
+### Added
+
+- [INFRA] ZEIT NOW deployment
+- [INFRA] app webpack config
+  - needs polishing
+
 ## [0.1.0-alpha.4] - 2019-03-30
 
 ### Added

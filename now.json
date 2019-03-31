@@ -1,0 +1,26 @@
+{
+  "name": "hansl",
+  "public": false,
+  "version": 2,
+  "builds": [
+    {
+      "src": "/app/src/**/*.js",
+      "use": "@now/node"
+    },
+    {
+      "src": "/app/.env",
+      "use": "@now/static"
+    },
+    {
+      "src": "/packages/logger/package.json",
+      "use": "@now/static"
+    },
+    {
+      "src": "/packages/logger/index.js",
+      "use": "@now/node"
+    }
+  ],
+  "env": {
+    "NODE_ENV": "PRODUCTION"
+  }
+}

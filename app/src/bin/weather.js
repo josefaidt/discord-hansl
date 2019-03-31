@@ -1,4 +1,3 @@
-const { request } = require('graphql-request')
 const query = require('../lib/index.q')
 
 const config = {
