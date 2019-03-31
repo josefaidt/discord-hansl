@@ -1,7 +1,7 @@
 {
   "name": "@hansl/root",
   "private": true,
-  "version": "0.1.0-alpha.6",
+  "version": "0.1.0",
   "description": "My Node.js Discord bot",
   "author": {
     "name": "Josef Aidt",
@@ -16,7 +16,11 @@
     "lint": "eslint --config .config/.eslintrc.js .",
     "lint:fix": "eslint --fix --config .config/.eslintrc.js .",
     "clean": "rimraf node_modules **/node_modules",
-    "reload": "yarn clean; yarn install"
+    "reload": "yarn clean; yarn install",
+    "build:docker": "yarn build:docker:image; yarn build:docker:container",
+    "build:docker:image": "docker build --tag josef/hansl:latest --tag josef/hansl:$npm_package_version .",
+    "build:docker:image:remote": "docker build https://github.com/josefaidt/discord-hansl.git",
+    "build:docker:container": "docker container run -p 3000:3000 --name hansl --hostname APP_DISCORD_HANSL --env-file ./app/.env josef/hansl:$npm_package_version"
   },
   "devDependencies": {
     "@josefaidt/eslint-config": "^0.1.4",

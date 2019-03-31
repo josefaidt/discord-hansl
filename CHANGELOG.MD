@@ -15,6 +15,12 @@ All notable changes to the Hansl bot will be documented in this file.
 
 ---
 
+## [0.1.0-rc.1] - 2019-03-31
+
+### Changed
+
+- Removed ZEIT NOW, re-enabled Docker
+
 ## [0.1.0-alpha.6] - 2019-03-31
 
 ### Added
