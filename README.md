@@ -21,7 +21,7 @@ A Discord bot built using Node.js, [discordjs](https://discord.js.org/#/), and a
 
 *Coming Soon!*
 
-## Docker
+## Docker *(deprecated)*
 
 This app includes a `Dockerfile` to build an image off of, as long as you have a valid `.env` file to run using. The scripts to build are saved in `package.json`
 
