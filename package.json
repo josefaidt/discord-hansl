@@ -1,7 +1,7 @@
 {
   "name": "@hansl/root",
   "private": true,
-  "version": "0.1.0-alpha.5",
+  "version": "0.1.0-alpha.6",
   "description": "My Node.js Discord bot",
   "author": {
     "name": "Josef Aidt",
@@ -12,7 +12,7 @@
     "start": "yarn workspace @hansl/app run start",
     "start:dev": "yarn workspace @hansl/app run start:dev",
     "build": "yarn workspace @hansl/app run build",
-    "deploy": "now -e NODE_ENV=PRODUCTION",
+    "deploy": "now",
     "lint": "eslint --config .config/.eslintrc.js .",
     "lint:fix": "eslint --fix --config .config/.eslintrc.js .",
     "clean": "rimraf node_modules **/node_modules",

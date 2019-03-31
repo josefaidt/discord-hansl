@@ -21,6 +21,9 @@
     }
   ],
   "env": {
-    "NODE_ENV": "PRODUCTION"
+    "NODE_ENV": "PRODUCTION",
+    "LOGIN": "@discord-login-token",
+    "PREFIX": "$",
+    "WEATHER_URL": "https://nweather.josefaidt.now.sh/api"
   }
 }
