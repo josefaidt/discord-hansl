@@ -39,7 +39,3 @@ Ensure you have both yarn and Docker installed in order to successfully build th
 - `build:docker:container`: stops and removes existing containers using the name `hansl`, and builds a new container using the pulled image.
   - `env-file` (*required*): specify using an absolute path your environment dotfile based off provided `.config/.env.sample`
 - `build:docker`: runs the production build process, builds the Docker image from local assets, builds Docker container
-
-## Early Stages
-
-For information regarding the status of this project, please visit the [kanban board](https://www.notion.so/josefaidt/33e5339ee4a5428291aee596760bf828?v=85cf15c18e8e41969b9975d68c2f97cb) and the [changelog](https://github.com/josefaidt/discord-hansl/blob/master/CHANGELOG.MD).
